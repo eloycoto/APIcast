@@ -292,6 +292,7 @@ introspection endpoint from the oidc_issuer_endpoint of the service configuratio
 {
   "oidc": [
     {
+      "endpoint_issuer": "http://app:appsec@test_backend:$TEST_NGINX_SERVER_PORT/issuer/endpoint",
       "issuer": "https://example.com/auth/realms/apicast",
       "config": { "id_token_signing_alg_values_supported": [ "RS256" ] },
       "keys": { "somekid": { "pem": "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALClz96cDQ965ENYMfZzG+Acu25lpx2K\nNpAALBQ+catCA59us7+uLY5rjQR6SOgZpCz5PJiKNAdRPDJMXSmXqM0CAwEAAQ==\n-----END PUBLIC KEY-----" } }

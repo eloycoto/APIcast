@@ -120,7 +120,7 @@ function _M:call(issuer)
     local config, err = _M.openid_configuration(self, issuer)
     if not config then return nil, err end
 
-    return { config = config, issuer = config.issuer, keys = _M.jwks(self, config) }
+    return { config = config, issuer = config.issuer, endpoint_issuer = issuer, keys = _M.jwks(self, config) }
 end
 
 return _M

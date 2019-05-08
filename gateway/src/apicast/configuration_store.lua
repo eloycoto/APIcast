@@ -100,11 +100,17 @@ local hashed_array = {
 }
 
 function _M.store(self, config, ttl)
-  self.configured = true
 
+  self.configured = true
   local services = config.services or {}
   local by_host = setmetatable({}, hashed_array)
-  local oidc = config.oidc or {}
+  local oidcs = {}
+
+  for _, val in pairs(config.oidc or {}) do
+    if val and val ~= ngx.null then
+      oidcs[val.endpoint_issuer or val.issuer] = val
+    end
+  end
 
   local ids = {}
 
@@ -113,10 +119,16 @@ function _M.store(self, config, ttl)
     local hosts = service.hosts or {}
     local id = service.id
 
-    if oidc[i] ~= ngx.null then
-      -- merge service and OIDC config, this is far from ideal, but easy for now
-      for k,v in pairs(oidc[i] or {}) do
-        service.oidc[k] = v
+    if service.oidc and service.oidc.issuer_endpoint then
+      local oidc_issuer = oidcs[service.oidc.issuer_endpoint]
+      if oidc_issuer then
+        for k,v in pairs(oidc_issuer) do
+          service.oidc[k] = v
+        end
+      else
+        ngx.log(ngx.WARN, string.format(
+          "OIDC issuer not found in config for service id '%s' with issuer endpoint '%s'",
+          service.id, service.oidc.issuer_endpoint))
       end
     end
 

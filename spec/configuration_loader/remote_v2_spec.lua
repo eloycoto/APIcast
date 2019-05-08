@@ -217,6 +217,7 @@ describe('Configuration Remote Loader V2', function()
           issuer = 'https://idp.example.com/auth/realms/foo',
           jwks_uri = 'https://idp.example.com/auth/realms/foo/jwks'
         },
+        endpoint_issuer = 'http://user:pass@idp.example.com/auth/realms/foo/',
         issuer = 'https://idp.example.com/auth/realms/foo',
         keys = { ['3g-I9PWt6NrznPLcbE4zZrakXar27FDKEpqRPlD2i2Y'] = {
           e = 'AQAB',

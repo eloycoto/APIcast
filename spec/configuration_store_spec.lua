@@ -50,6 +50,47 @@ describe('Configuration Store', function()
 
       assert(store:store({services = { service_one, service_two }, oidc = { ngx.null, ngx.null }}))
     end)
+
+    describe("with OIDC", function()
+      local service_one = {
+        id = '7', hosts = { 'example.com' },
+        oidc = {issuer_endpoint= "foo"}}
+      local service_two = {
+        id = '42', hosts = { 'example.com' },
+        oidc = {issuer_endpoint= "bar"}}
+
+      local oidcs = {
+        { issuer = "bar", value="bar"},
+        { issuer = "foo", value="foo"}}
+
+      it('stores config with unsorted services', function()
+        local store = configuration.new()
+        local newConfig = store:store({services = { service_one, service_two }, oidc=oidcs})
+        assert.are.equal(newConfig.services[1].oidc.value, "foo")
+        assert.are.equal(newConfig.services[2].oidc.value, "bar")
+      end)
+
+      it('service does not contain oidc if not issuer_endpoint', function()
+        local store = configuration.new()
+        local service = {id = '42', hosts = { 'example.com' }}
+
+        local newConfig = store:store({services = { service_one, service }, oidc=oidcs})
+        assert.are.equal(newConfig.services[1].oidc.value, "foo")
+        assert.are.equal(newConfig.services[2].oidc, nil)
+      end)
+
+      it('service with invalid issuer_endpoint', function()
+        local store = configuration.new()
+        local service = {
+          id = '42', hosts = { 'example.com' },
+          oidc = {issuer_endpoint= "invalid"}}
+
+        local newConfig = store:store({services = { service_one, service }, oidc=oidcs})
+        assert.are.equal(newConfig.services[1].oidc.value, "foo")
+        assert.are.equal(newConfig.services[2].oidc.value, nil)
+      end)
+
+    end)
   end)
 
   describe('.find_by_id', function()

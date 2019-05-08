@@ -139,6 +139,7 @@ to_json({
     }
   }],
   oidc => [{
+    endpoint_issuer => 'https://example.com/auth/realms/apicast',
     keys => { somekid => { pem => $::public_key } },
   }]
 });
