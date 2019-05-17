@@ -21,6 +21,13 @@ local ngx_ctx_original = deepcopy(ngx.ctx)
 local ngx_shared_original = deepcopy(ngx.shared)
 local ngx_header_original = deepcopy(ngx.header)
 
+-- Apicast shared variables that are mocked at more than one different test.
+local ngx_variable = require('apicast.policy.ngx_variable')
+local ngx_variable_original = deepcopy(ngx_variable)
+
+local backend_client = require('apicast.backend_client')
+local backend_client_original = deepcopy(backend_client)
+
 local register_getter = misc.register_ngx_magic_key_getter
 local register_setter = misc.register_ngx_magic_key_setter
 
@@ -54,6 +61,19 @@ local function reset_ngx_shared(state)
   end
 end
 
+-- Set the table like that to set the key as the variable.
+local apicast_reset = {}
+apicast_reset[ngx_variable] = ngx_variable_original
+apicast_reset[backend_client] = backend_client_original
+
+local function reset_apicast_state()
+  for current, original in pairs(apicast_reset) do
+    for key, _ in pairs(original) do
+      current[key] = original[key]
+    end
+  end
+end
+
 --- ngx keys that are going to be reset in between tests.
 local ngx_reset = {
   var = ngx_var_original,
@@ -76,6 +96,8 @@ local function cleanup()
   register_getter('headers_sent', get_headers_sent)
   register_setter('headers_sent', set_headers_sent)
   reset_ngx_state()
+
+  reset_apicast_state()
 end
 
 local function setup()
