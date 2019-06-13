@@ -1,0 +1,36 @@
+{
+  "services": [
+    {
+      "id": 200,
+      "endpoint": "http://localhost:8080",
+      "backend_version": "1",
+      "proxy": {
+        "service_backend_version": "1",
+        "hosts": [
+                  "one"
+              ],
+        "api_backend": "https://echo-api.3scale.net:443",
+        "proxy_rules": [
+          { "pattern": "/", "http_method": "GET", "metric_system_name": "hits", "delta": 1 }
+        ],
+        "policy_chain": [
+          { "name": "apicast.policy.apicast" },
+          {
+            "name": "ip_check",
+            "version": "builtin",
+            "configuration": {
+              "error_msg": "IP address not allowed",
+              "client_ip_sources": [
+                "X-Forwarded-For"
+              ],
+              "ips": [
+                "1.2.3.4"
+              ],
+              "check_type": "blacklist"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

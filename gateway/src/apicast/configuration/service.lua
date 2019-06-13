@@ -222,6 +222,8 @@ function _M:oauth()
   local authentication = self.authentication_method or self.backend_version
 
   if authentication == 'oidc' then
+    -- ngx.log(ngx.ERR, "OIDC----> IS NEW::", debug.traceback())
+    -- ngx.log(ngx.ERR, "OIDC----> IS NEW::", require("inspect").inspect(self.oidc))
     return oauth.oidc.new(self.oidc)
   elseif authentication == 'oauth' then
     return oauth.apicast.new(self)

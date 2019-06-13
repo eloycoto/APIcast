@@ -169,6 +169,7 @@ function _M:parse(jwt, cache_key)
 end
 
 function _M:verify(jwt, cache_key)
+  ngx.log(ngx.ERR, "OIDC---VERIFY--->")
   if not jwt then
     return false, 'JWT missing'
   end

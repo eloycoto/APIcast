@@ -23,7 +23,13 @@ local evaluate_func = {
   -- false otherwise.
   ['matches'] = function(left, right)
     return (match(tostring(left), tostring(right)) and true) or false
-  end
+  end,
+
+  -- Numerics entries
+  [">"] = function(left, right) return (tonumber(left) or 0) > (tonumber(right) or 0) end,
+  [">="] = function(left, right) return (tonumber(left) or 0) >= (tonumber(right) or 0) end,
+  ["<="] = function(left, right) return (tonumber(left) or 0) <= (tonumber(right) or 0) end,
+  ["<"] = function(left, right) return (tonumber(left) or 0) < (tonumber(right) or 0) end,
 }
 
 --- Initialize an operation

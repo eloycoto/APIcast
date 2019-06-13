@@ -1,0 +1,92 @@
+{
+  "$schema": "http://apicast.io/policy-v1/schema#manifest#",
+  "name": "Header modification",
+  "summary": "Allows to include custom headers.",
+  "description": [
+    "This policy allows to include custom headers that will be sent to the ",
+    "upstream as well as modify or delete the ones included in the original ",
+    "request. Similarly, this policy also allows to add, modify, and delete ",
+    "the headers included in the response."
+  ],
+  "version": "builtin",
+  "configuration": {
+    "type": "array",
+    "definitions": {
+      "commands": {
+        "description": "List of operations to apply to JWT claim",
+        "type": "object",
+        "items": {
+          "type": "object",
+          "properties": {
+            "op": {
+              "description": "Operation to be applied",
+              "type": "string",
+              "oneOf": [
+                {
+                  "enum": [
+                    "add"
+                  ],
+                  "title": "Add a value to an existing header."
+                },
+                {
+                  "enum": [
+                    "set"
+                  ],
+                  "title": "Create the header when not set, replace its value when set."
+                },
+                {
+                  "enum": [
+                    "push"
+                  ],
+                  "title": "Create the header when not set, add the value when set."
+                },
+                {
+                  "enum": [
+                    "delete"
+                  ],
+                  "title": "Delete a header."
+                }
+              ]
+            },
+            "key": {
+              "description": "Liquid string to retrieve any jwt claim",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value that will be compared with the key in use.",
+              "type": "string"
+            },
+            "check_type": {
+              "description": "The type of check to apply",
+              "type": "string",
+              "oneOf": [
+                {
+                  "enum": [
+                    "blacklist"
+                  ],
+                  "title": "Block the IPs included in the list"
+                },
+                {
+                  "enum": [
+                    "whitelist"
+                  ],
+                  "title": "Allow only the IPs included in the list"
+                }
+              ]
+            }
+          },
+          "required": [
+            "op",
+            "key",
+            "value"
+          ]
+        }
+      }
+    },
+    "properties": {
+      "commands": {
+        "$ref": "#/definitions/commands"
+      }
+    }
+  }
+}

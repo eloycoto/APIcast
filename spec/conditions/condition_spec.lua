@@ -85,5 +85,6 @@ describe('Engine', function()
     it('returns true when there are no operations', function()
       assert.is_true(Condition.new():evaluate())
     end)
+
   end)
 end)

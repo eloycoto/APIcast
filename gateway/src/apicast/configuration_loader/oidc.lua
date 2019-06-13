@@ -20,6 +20,7 @@ end
 _M.discovery = require('resty.oidc.discovery').new()
 
 local function load_service(service)
+    ngx.log(ngx.ERR, "Load service-->", service.id)
     if not service or not service.proxy then return nil end
 
     return _M.discovery:call(service.proxy.oidc_issuer_endpoint)

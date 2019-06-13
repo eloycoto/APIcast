@@ -200,7 +200,8 @@ end
 
 local function handle_oauth(service)
   local oauth, err = service:oauth()
-
+	ngx.log(ngx.ERR, 'Service---->: ', service.id)
+	ngx.log(ngx.ERR, 'Service---->OAUTH: ', require("inspect").inspect(oauth.call))
   if oauth then
     ngx.log(ngx.DEBUG, 'using OAuth: ', oauth)
 
@@ -210,6 +211,7 @@ local function handle_oauth(service)
   end
 
   if oauth and oauth.call then
+
     local f, params = oauth:call(service)
 
     if f then

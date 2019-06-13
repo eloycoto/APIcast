@@ -1,0 +1,42 @@
+{
+  "services": [
+    {
+      "id": 200,
+      "endpoint": "http://localhost:8080",
+      "backend_version": "1",
+      "backend_version": "oauth",
+      "proxy": {
+        "authentication_method": "oidc",
+        "oidc_issuer_endpoint": "http://192.168.15.103:10000/auth/realms/3scale",
+        "service_backend_version": "1",
+        "hosts": [
+          "one"
+        ],
+        "api_backend": "https://echo-api.3scale.net:443",
+        "proxy_rules": [
+          {
+            "pattern": "/",
+            "http_method": "GET",
+            "metric_system_name": "hits",
+            "delta": 1
+          }
+        ],
+        "policy_chain": [
+          {
+            "name": "apicast.policy.apicast"
+          },
+          {
+            "name": "apicast.policy.jwt_check",
+            "configuration": {
+                "error_message": "Invalid JWT check",
+                "operations": [
+                    {"op": "==", "match": "acr", "match_type": "plain", "value": "1", "check_type": "whitelist"},
+                    {"op": "==", "match": "{{upn}}", "match_type": "liquid", "value": "eloy", "check_type": "whitelist"}                
+                ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

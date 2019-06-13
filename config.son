@@ -1,0 +1,168 @@
+{
+  "id": 2445582730474,
+  "provider_key": "30ea724a68f4071354020ba9a8b49801",
+  "services": [
+    {
+      "id": 2555417794444,
+      "account_id": 2445582730474,
+      "name": "Echo API",
+      "oneline_description": null,
+      "description": null,
+      "txt_api": null,
+      "txt_support": null,
+      "txt_features": null,
+      "created_at": "2019-04-24T10:08:20Z",
+      "updated_at": "2019-06-07T08:40:03Z",
+      "logo_file_name": null,
+      "logo_content_type": null,
+      "logo_file_size": null,
+      "state": "incomplete",
+      "intentions_required": false,
+      "draft_name": "",
+      "infobar": null,
+      "terms": null,
+      "display_provider_keys": false,
+      "credit_card_support_email": null,
+      "buyers_manage_apps": true,
+      "buyers_manage_keys": true,
+      "custom_keys_enabled": true,
+      "buyer_plan_change_permission": "request",
+      "buyer_can_select_plan": false,
+      "notification_settings": null,
+      "default_application_plan_id": 2357356060701,
+      "default_service_plan_id": 2357356060699,
+      "default_end_user_plan_id": null,
+      "end_user_registration_required": true,
+      "tenant_id": 2445582730474,
+      "system_name": "api",
+      "backend_version": "1",
+      "mandatory_app_key": true,
+      "buyer_key_regenerate_enabled": true,
+      "support_email": "ecotoper@redhat.com",
+      "referrer_filters_required": false,
+      "deployment_option": "self_managed",
+      "kubernetes_service_link": null,
+      "tech_support_email": null,
+      "admin_support_email": null,
+      "proxiable?": true,
+      "backend_authentication_type": "service_token",
+      "backend_authentication_value": "7545ef9a214801d61f1162dc3056024fc34cd7b84c9fc0ec1bd6b6199e4beb05",
+      "proxy": {
+        "id": 140634,
+        "tenant_id": 2445582730474,
+        "service_id": 2555417794444,
+        "endpoint": "http://172.18.0.3:8080",
+        "deployed_at": null,
+        "api_backend": "https://echo-api.3scale.net:443",
+        "auth_app_key": "app_key",
+        "auth_app_id": "app_id",
+        "auth_user_key": "user_key",
+        "credentials_location": "query",
+        "error_auth_failed": "Authentication failed",
+        "error_auth_missing": "Authentication parameters missing",
+        "created_at": "2019-04-24T10:08:20Z",
+        "updated_at": "2019-06-07T08:40:03Z",
+        "error_status_auth_failed": 403,
+        "error_headers_auth_failed": "text/plain; charset=us-ascii",
+        "error_status_auth_missing": 403,
+        "error_headers_auth_missing": "text/plain; charset=us-ascii",
+        "error_no_match": "No Mapping Rule matched",
+        "error_status_no_match": 404,
+        "error_headers_no_match": "text/plain; charset=us-ascii",
+        "secret_token": "Shared_secret_sent_from_proxy_to_API_backend_5d12d87c1c54333d",
+        "hostname_rewrite": "",
+        "oauth_login_url": null,
+        "sandbox_endpoint": "http://172.18.0.3:8080",
+        "api_test_path": "/some-path",
+        "api_test_success": null,
+        "apicast_configuration_driven": true,
+        "oidc_issuer_endpoint": "",
+        "lock_version": 38,
+        "authentication_method": "1",
+        "hostname_rewrite_for_sandbox": "echo-api.3scale.net",
+        "endpoint_port": 8080,
+        "valid?": true,
+        "service_backend_version": "1",
+        "hosts": [
+          "172.18.0.3"
+        ],
+        "backend": {
+          "endpoint": "https://su1.3scale.net",
+          "host": "su1.3scale.net"
+        },
+        "policy_chain": [
+          {
+            "name": "apicast",
+            "version": "builtin",
+            "configuration": {}
+          },
+          {
+            "name": "headers",
+            "version": "builtin",
+            "configuration": {
+              "response": [
+                {
+                  "op": "set",
+                  "header": "lola",
+                  "value_type": "plain",
+                  "value": "123312"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ip_check",
+            "version": "builtin",
+            "configuration": {
+              "error_msg": "IP address not allowed",
+              "client_ip_sources": [
+                "X-Forwarded-For"
+              ],
+              "ips": [
+                "1.2.3.4"
+              ],
+              "check_type": "blacklist"
+            }
+          }
+        ],
+        "proxy_rules": [
+          {
+            "id": 440381,
+            "proxy_id": 140634,
+            "http_method": "GET",
+            "pattern": "/",
+            "metric_id": 2555418269926,
+            "metric_system_name": "hits",
+            "delta": 1,
+            "tenant_id": 2445582730474,
+            "created_at": "2019-04-24T10:08:20Z",
+            "updated_at": "2019-04-24T10:08:20Z",
+            "redirect_url": null,
+            "position": 1,
+            "last": false,
+            "parameters": [],
+            "querystring_parameters": {}
+          },
+          {
+            "id": 440382,
+            "proxy_id": 140634,
+            "http_method": "GET",
+            "pattern": "/foo",
+            "metric_id": 2555418269927,
+            "metric_system_name": "superlimit",
+            "delta": 1,
+            "tenant_id": 2445582730474,
+            "created_at": "2019-04-24T10:12:14Z",
+            "updated_at": "2019-04-24T10:12:14Z",
+            "redirect_url": null,
+            "position": 2,
+            "last": false,
+            "parameters": [],
+            "querystring_parameters": {}
+          }
+        ]
+      }
+    }
+  ],
+  "timestamp": "2019-06-07T08:47:47Z"
+}

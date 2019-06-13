@@ -1,0 +1,88 @@
+=head2 Wed Jun  5 10:32:40 2019: C<Module> L<Carp::Trace|Carp::Trace>
+
+=over 4
+
+=item *
+
+C<installed into: /home/centos/perl5/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.12>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Wed Jun  5 10:39:03 2019: C<Module> L<Devel::StackTrace|Devel::StackTrace>
+
+=over 4
+
+=item *
+
+C<installed into: /home/centos/perl5/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 2.04>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Thu Jun  6 16:07:26 2019: C<Module> L<Path::Tiny|Path::Tiny>
+
+=over 4
+
+=item *
+
+C<installed into: /home/centos/perl5/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.047>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Fri Jun  7 06:49:10 2019: C<Module> L<Path::Tiny|Path::Tiny>
+
+=over 4
+
+=item *
+
+C<installed into: /home/centos/perl5/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.047>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

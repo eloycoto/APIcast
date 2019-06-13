@@ -1,3 +1,5 @@
+getmetatable(_G).__newindex = nil
+
 package.path = package.path .. ";./src/?.lua;"
 require('apicast.loader')
 
