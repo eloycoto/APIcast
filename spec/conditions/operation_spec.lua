@@ -85,5 +85,102 @@ describe('Operation', function()
 
       assert.is_false(not_eq_int_and_string)
     end)
+
+    describe("numerics operations", function()
+      local context = {
+          a="1",
+          b="2",
+          c="3",
+          invalid="invalid"
+      }
+
+      it("validate greater than operation", function()
+        local expected_results = {
+          {"1" , "2", false},
+          {"1" , "1", false},
+          {"2" , "1", true},
+          {"xx" , "2", false},
+          {"2" , "xx", true},
+          {"{{a}}" , "1", false},
+          {"{{b}}" , "2", false},
+          {"{{c}}" , "2", true},
+          {"{{invalid}}", 2, false},
+          {{123,123}, 2, false}
+        }
+
+
+        for _,x in ipairs(expected_results) do
+           local op = Operation.new(x[1], "liquid", ">", x[2], "liquid")
+           assert.are.same(op:evaluate(context), x[3], "issue comparing interaction ".. tostring(x[1]) .." > " ..tostring(x[2]))
+        end
+      end)
+
+      it("validate greater or equal than operation", function()
+        local expected_results = {
+          {"1" , "2", false},
+          {"1" , "1", true},
+          {"2" , "1", true},
+          {"xx" , "2", false},
+          {"2" , "xx", true},
+          {"0" , "xx", true},
+          {"{{a}}" , "0", true},
+          {"{{a}}" , "1", true},
+          {"{{c}}" , "2", true},
+          {"{{invalid}}", "2", false},
+          {"{{invalid}}", "0", true},
+          {{123,123}, 0, true},
+        }
+
+
+        for _,x in ipairs(expected_results) do
+           local op = Operation.new(x[1], "liquid", ">=", x[2], "liquid")
+           assert.are.same(op:evaluate(context), x[3], "issue comparing interaction ".. tostring(x[1]) .." >=" ..tostring(x[2]))
+        end
+      end)
+
+      it("validate less than operation", function()
+        local expected_results = {
+          {"1" , "2", true},
+          {"1" , "1", false},
+          {"2" , "1", false},
+          {"xx" , "2", true},
+          {"2" , "xx", false},
+          {"{{a}}" , "2", true},
+          {"{{a}}" , "1", false},
+          {"{{c}}" , "1", false},
+          {"{{invalid}}" , "2", true},
+          {"{{invalid}}" , "-2", false},
+          {{123,123}, "-2", false},
+        }
+
+
+        for _,x in ipairs(expected_results) do
+           local op = Operation.new(x[1], "liquid", "<", x[2], "liquid")
+           assert.are.same(op:evaluate(context), x[3], "issue comparing interaction ".. tostring(x[1]) .." < " .. tostring(x[2]))
+        end
+      end)
+
+      it("validate less or equal than operation", function()
+        local expected_results = {
+          {"1" , "2", true},
+          {"1" , "1", true},
+          {"2" , "1", false},
+          {"xx" , "2", true},
+          {"2" , "xx", false},
+          {"{{a}}" , "2", true},
+          {"{{a}}" , "1", true},
+          {"{{c}}" , "1", false},
+          {"{{invalid}}", 2, true},
+          {"{{invalid}}", -2, true},
+          {{123,123}, -2, true},
+        }
+
+        for _,x in ipairs(expected_results) do
+           local op = Operation.new(x[1], "liquid", "<=", x[2], "liquid")
+           assert.are.same(op:evaluate(context), x[3], "issue comparing interaction ".. tostring(x[1]) .." <=" .. tostring(x[2]))
+        end
+      end)
+    end)
+
   end)
 end)
