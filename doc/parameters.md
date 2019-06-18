@@ -210,7 +210,7 @@ Service 3: backend endpoint http://prod.foo.dev
 Service 4: backend endpoint http://prod.bar.dev
 ```
 
-The services that will be configured in Apicast will be 1 and 3. Services 2 and
+The services that will be configured in embedded APIcast will be 1 and 3. Services 2 and
 4 will be discarded.
 
 ### `APICAST_SERVICES_LIST`
