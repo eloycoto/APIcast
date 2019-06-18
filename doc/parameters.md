@@ -202,12 +202,13 @@ Note: If a service does not match, but is included in the
 `APICAST_SERVICES_LIST`, service will not be discarded
 
 Example:
-
-Regexp Filter: http:\/\/.*.google.com
-Service 1: backend endpoint http://www.google.com
-Service 2: backend endpoint http://www.yahoo.com
-Service 3: backend endpoint http://mail.google.com
-Service 4: backend endpoint http://mail.yahoo.com
+```
+Regexp Filter: http:\/\/.*.foo.dev
+Service 1: backend endpoint http://staging.foo.dev
+Service 2: backend endpoint http://staging.bar.dev
+Service 3: backend endpoint http://prod.foo.dev
+Service 4: backend endpoint http://prod.bar.dev
+```
 
 The services that will be configured in Apicast will be 1 and 3. Services 2 and
 4 will be discarded.
