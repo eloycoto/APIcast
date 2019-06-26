@@ -62,13 +62,15 @@ local function backend_endpoint(proxy)
     end
 end
 
-local function build_policy_chain(policies)
+local function build_policy_chain(service, policies)
   if not value(policies) then return nil, 'no policy chain' end
 
   local chain = tab_new(#policies, 0)
 
   for i=1, #policies do
-      local policy, err = policy_chain.load_policy(policies[i].name, policies[i].version, policies[i].configuration)
+      local policy, err = policy_chain.load_policy(
+        policies[i].name, policies[i].version, 
+        policies[i].configuration, service)
 
       if policy then
         insert(chain, policy)
@@ -85,14 +87,13 @@ function _M.parse_service(service)
   local proxy = service.proxy or empty_t
   local backend = backend_endpoint(proxy)
 
-  return Service.new({
+  local svc = Service.new({
       id = tostring(service.id or 'default'),
       system_name = tostring(service.system_name or ''),
       backend_version = backend_version,
       authentication_method = proxy.authentication_method or backend_version,
       hosts = proxy.hosts or { 'localhost' }, -- TODO: verify localhost is good default
       api_backend = proxy.api_backend,
-      policy_chain = build_policy_chain(proxy.policy_chain),
       error_auth_failed = proxy.error_auth_failed or 'Authentication failed',
       error_limits_exceeded = proxy.error_limits_exceeded or 'Limits exceeded',
       error_auth_missing = proxy.error_auth_missing or 'Authentication parameters missing',
@@ -130,6 +131,10 @@ function _M.parse_service(service)
       -- And returning the original back is the easiest option for now.
       serializable = service
     })
+
+    svc.policy_chain = build_policy_chain(service, proxy.policy_chain)
+    return svc
+
 end
 
 function _M.services_limit()
