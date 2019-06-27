@@ -71,7 +71,7 @@ end
 local function absolute_url(uri)
     local host, port = resolve(uri)
 
-    return format('%s://%s:%s%s',
+    return format('%s://%s:%s/%s',
             uri.scheme,
             host,
             port,
@@ -136,10 +136,19 @@ end
 
 function _M.request(upstream, proxy_uri)
     local uri = upstream.uri
-
+    local server_err = nil 
     if uri.scheme == 'http' then -- rewrite the request to use http_proxy
         upstream:use_host_header(uri.host) -- to keep correct Host header in case we need to resolve it to IP
-        upstream.servers = resolve_servers(proxy_uri)
+        upstream.servers, server_err = resolve_servers(proxy_uri)
+        if not upstream.servers  then
+          ngx.log(ngx.ERR, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+          ngx.log(ngx.ERR, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+          ngx.log(ngx.ERR, "Upstream Server-->", require("inspect").inspect(upstream.servers))
+          ngx.log(ngx.ERR, "Upstream Server-->", require("inspect").inspect(server_err))
+          ngx.log(ngx.ERR, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+          ngx.log(ngx.ERR, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+        end
+
         upstream.uri.path = absolute_url(uri)
         upstream:rewrite_request()
         return
