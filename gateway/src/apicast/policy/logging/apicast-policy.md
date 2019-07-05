@@ -1,26 +1,15 @@
 {
   "$schema": "http://apicast.io/policy-v1/schema#manifest#",
-  "name": "Logging",
-  "summary": "Controls logging.",
+  "name": "logging",
+  "summary": "Enable or disable default or custom access log",
   "description": [
-    "Controls logging. It allows to enable and disable access logs per ",
-    "service. Also it allows to have a custom access logs format per service"
+    "This policy allows the service to write custom acess log for the specific",
+    "service, where the variables need to be written using liquid format and log",
+    "entries can be disabled based on conditional operations"
   ],
   "version": "builtin",
   "configuration": {
-    "type": "object",
-    "properties": {
-      "enable_access_logs": {
-        "description": "Whether to enable access logs for the service",
-        "type": "boolean"
-      },
-      "custom_logging": {
-        "title": "Custom logging format",
-        "description": "A string variable that uses liquid templating to render a custom access log entry. All Nginx variables can be used plus per service entries",
-        "type": "string"
-      },
-      "condition": {
-"definitions": {
+    "definitions": {
       "value_type": {
         "$id": "#/definitions/value_type",
         "type": "string",
@@ -40,6 +29,19 @@
         ]
       }
     },
+    "type": "object",
+    "properties": {
+      "enable_access_logs": {
+        "title": "Enable access logs",
+        "description": "This option enables the output of the default access log for this service",
+        "type": "boolean"
+      },
+      "custom_logging": {
+        "title": "Custom logging format",
+        "description": "A string variable that uses liquid templating to render a custom access log entry. All Nginx variables can be used plus per service entries",
+        "type": "string"
+      },
+      "condition": {
         "type": "object",
         "properties": {
           "operations": {

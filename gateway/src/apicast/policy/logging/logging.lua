@@ -15,6 +15,7 @@ local ngx_var_extended_access_log = 'extended_access_log'
 
 local default_enable_access_logs = true
 local default_template_type = 'plain'
+local default_combine_op = "and"
 
 -- Returns the value for the ngx var above from a boolean that indicates
 -- whether access logs are enabled or not.
@@ -47,7 +48,7 @@ function _M.new(config)
           operation.op,
           operation.value, operation.value_type or default_template_type))
     end
-    self.condition = Condition.new( operations, config.condition.combine_op)
+    self.condition = Condition.new( operations, config.condition.combine_op or default_combine_op)
   end
 
   return self
