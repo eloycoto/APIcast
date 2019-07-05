@@ -81,6 +81,17 @@ describe('Logging policy', function()
         assert.equals("foo", ngx.var.extended_access_log)
       end)
 
+      it("Validate default combine_op", function()
+        local logging = LoggingPolicy.new({
+          custom_logging = "foo",
+          condition = {
+            operations={{op="==", match="{{ foo }}", match_type="liquid", value="fooValue", value_type="plain"}}
+          }})
+        logging:log(ctx)
+        assert.equals(0, ngx.var.access_logs_enabled)
+        assert.equals(1, ngx.var.extended_access_logs_enabled)
+        assert.equals("foo", ngx.var.extended_access_log)
+      end)
 
       it("Or combination match one", function()
         local logging = LoggingPolicy.new({
