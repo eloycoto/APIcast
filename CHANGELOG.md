@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - OAuth 2.0 MTLS policy [PR #1101](https://github.com/3scale/APIcast/pull/1101) [Issue #1003](https://github.com/3scale/APIcast/issues/1003)
 - Added http_proxy policy to use an HTTP proxy in api_backed calls. [THREESCALE-2696](https://issues.jboss.org/browse/THREESCALE-2696) [PR #1080](https://github.com/3scale/APIcast/pull/1080)
 - Option to load service configurations one by one lazily [PR #1099](https://github.com/3scale/APIcast/pull/1099)
+- New maintenance mode policy, useful for maintenance periods. [PR #1105](https://github.com/3scale/APIcast/pull/1105), [THREESCALE-3189](https://issues.jboss.org/browse/THREESCALE-3189)
 
 ## [3.6.0-rc1] - 2019-07-04
 
