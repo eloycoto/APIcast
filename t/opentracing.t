@@ -39,3 +39,79 @@ qr/uber-trace-id: /
 --- udp_query eval
 qr/jaeger.version/
 --- wait: 10
+
+
+=== TEST 2: OpenTracing with header
+--- env eval
+(
+  'OPENTRACING_HEADER_FORWARD' => 'test-header',
+  'OPENTRACING_TRACER' => 'jaeger',
+)
+--- configuration
+    {
+        "services": [
+        {
+            "proxy": {
+            "policy_chain": [
+            { "name": "apicast.policy.upstream",
+                "configuration":
+                {
+                    "rules": [ { "regex": "/", "url": "http://echo" } ]
+                }
+            }
+            ]
+        }
+        }
+        ]
+    }
+--- request
+GET /a_path?
+--- response_body eval
+qr/uber-trace-id: /
+--- error_code: 200
+--- no_error_log
+[error]
+--- udp_listen: 6831
+--- udp_reply
+--- udp_query eval
+qr/jaeger.version/
+--- wait: 10
+
+
+=== TEST 3: OpenTracing with header
+--- env eval
+(
+  'OPENTRACING_HEADER_FORWARD', 'test-header',
+  'OPENTRACING_TRACER', 'jaeger',
+)
+--- configuration
+    {
+        "services": [
+        {
+            "proxy": {
+            "policy_chain": [
+            { "name": "apicast.policy.upstream",
+                "configuration":
+                {
+                    "rules": [ { "regex": "/", "url": "http://echo" } ]
+                }
+            }
+            ]
+        }
+        }
+        ]
+    }
+--- request
+GET /a_path?
+--- response_body eval
+qr/uber-trace-id: /
+--- error_code: 200
+--- no_error_log
+[error]
+--- udp_listen: 6831
+--- udp_reply
+--- udp_query eval
+qr/jaeger.version/
+--- wait: 10
+
+
