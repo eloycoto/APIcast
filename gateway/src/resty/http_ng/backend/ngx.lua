@@ -23,23 +23,24 @@ backend.send = function(_, request)
     return response.error(request, 'ngx backend does not support proxy')
   end
 
-  local res = backend.capture(PROXY_LOCATION, {
-    method = METHODS[request.method],
-    body = request.body,
-    ctx = {
-      headers = request.headers,
-      url = request.url,
-    },
-    vars = {
-      version = ngx.var.version,
-    }
-  })
+  return response.new(request, 200, {}, "")
+  -- local res = backend.capture(PROXY_LOCATION, {
+  --   method = METHODS[request.method],
+  --   body = request.body,
+  --   ctx = {
+  --     headers = request.headers,
+  --     url = request.url,
+  --   },
+  --   vars = {
+  --     version = ngx.var.version,
+  --   }
+  -- })
 
-  -- if res.truncated then
-    -- Do what? what error message it should say?
-  -- end
+  -- -- if res.truncated then
+  --   -- Do what? what error message it should say?
+  -- -- end
 
-  return response.new(request, res.status, res.header, res.body)
+  -- return response.new(request, res.status, res.header, res.body)
 end
 
 local balancer = require('apicast.balancer')
