@@ -167,6 +167,7 @@ end
 
 local function exec(self)
     ngx.var.proxy_pass = proxy_pass(self)
+    ngx.log(ngx.ERR, "PROXY_PASS--->VAR::'", ngx.var.proxy_pass, "'")
 
     -- the caller can unset the location_name to do own exec/location.capture
     if self.location_name then

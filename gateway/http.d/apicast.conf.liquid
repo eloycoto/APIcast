@@ -58,11 +58,11 @@ server {
   {%- assign https_port = env.APICAST_HTTPS_PORT %}
 
   {% if http_port != https_port -%}
-    listen {{ http_port }};
+    listen {{ http_port }} http2;
   {% endif %}
 
   {% if https_port -%}
-  listen {{ https_port }} ssl http2;
+  listen {{ https_port }} http2 ssl;
 
   {%- assign https_certificate = env.APICAST_HTTPS_CERTIFICATE -%}
   ssl_certificate {% if https_certificate -%}
