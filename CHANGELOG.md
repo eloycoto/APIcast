@@ -6,6 +6,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Add an option to enable keepalive_timeout on gateway [THREESCALE-2886](https://issues.jboss.org/browse/THREESCALE-2886) [PR #1106](https://github.com/3scale/APIcast/pull/1106)
+- Added http_proxy policy to use an HTTP proxy in api_backed calls. [THREESCALE-2696](https://issues.jboss.org/browse/THREESCALE-2696) [PR #1080](https://github.com/3scale/APIcast/pull/1080)
+- Added new parameters to logging policy to allow custom access log [PR #1089](https://github.com/3scale/APIcast/pull/1089), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)[THREESCALE-2876](https://issues.jboss.org/browse/THREESCALE-2876), [PR #1116] (https://github.com/3scale/APIcast/pull/1116)
+- Allow to use capture function in liquid templates. [PR #1107](https://github.com/3scale/APIcast/pull/1107), [THREESCALE-1911](https://issues.jboss.org/browse/THREESCALE-1911)
+- Enable liquid operations and original request variable on routing policy [PR #1103](https://github.com/3scale/APIcast/pull/1103) [THREESCALE-3239](https://issues.jboss.org/browse/THREESCALE-3239)
+- Introduce possibility of specifying policy order restrictions in their schemas. APIcast now shows a warning when those restrictions are not respected [#1088](https://github.com/3scale/APIcast/pull/1088), [THREESCALE-2896](https://issues.jboss.org/browse/THREESCALE-2896)
+- New maintenance mode policy, useful for maintenance periods. [PR #1105](https://github.com/3scale/APIcast/pull/1105), [THREESCALE-3189](https://issues.jboss.org/browse/THREESCALE-3189)
+- OAuth 2.0 MTLS policy [PR #1101](https://github.com/3scale/APIcast/pull/1101) [Issue #1003](https://github.com/3scale/APIcast/issues/1003)
+- Option to load service configurations one by one lazily [PR #1099](https://github.com/3scale/APIcast/pull/1099), [THREESCALE-3168](https://issues.jboss.org/browse/THREESCALE-3168)
+- Remove dnsmasq process for APIcast [PR #1090](https://github.com/3scale/APIcast/pull/1090), [THREESCALE-1555](https://issues.jboss.org/browse/THREESCALE-1555)
+
+### Fixed
+
+- Fix issues when OPENTRACING_FORWARD_HEADER was set [PR #1109](https://github.com/3scale/APIcast/pull/1109), [THREESCALE-1660](https://issues.jboss.org/browse/THREESCALE-1660)
+- New TLS termination policy [PR #1108](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-2898](https://issues.jboss.org/browse/THREESCALE-2898)
+- Fix exception on rate limit policy when window was set as 0. [PR #1113](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-3382](https://issues.jboss.org/browse/THREESCALE-3382)
+
 ## [3.6.0] - 2019-08-30
 
 `3.6.0-rc2` was considered final and became `3.6.0`.
@@ -15,31 +34,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Fix typos on JWT claim policy jsonschema [PR #1095](https://github.com/3scale/APIcast/pull/1095), [THREESCALE-3046](https://issues.jboss.org/browse/THREESCALE-3046)
-### Added
-
-- Introduce possibility of specifying policy order restrictions in their schemas. APIcast now shows a warning when those restrictions are not respected [#1088](https://github.com/3scale/APIcast/pull/1088), [THREESCALE-2896](https://issues.jboss.org/browse/THREESCALE-2896)
-- Added new parameters to logging policy to allow custom access log [PR #1081](https://github.com/3scale/APIcast/pull/1089) [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)[THREESCALE-2876](https://issues.jboss.org/browse/THREESCALE-2876)
-- OAuth 2.0 MTLS policy [PR #1101](https://github.com/3scale/APIcast/pull/1101) [Issue #1003](https://github.com/3scale/APIcast/issues/1003)
-- Added http_proxy policy to use an HTTP proxy in api_backed calls. [THREESCALE-2696](https://issues.jboss.org/browse/THREESCALE-2696) [PR #1080](https://github.com/3scale/APIcast/pull/1080)
-- Option to load service configurations one by one lazily [PR #1099](https://github.com/3scale/APIcast/pull/1099)
-- Added new parameters to logging policy to allow custom access log [PR #1089](https://github.com/3scale/APIcast/pull/1089), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)[THREESCALE-2876](https://issues.jboss.org/browse/THREESCALE-2876)
-- Added new parameters to logging policy to allow custom access log [PR #1089](https://github.com/3scale/APIcast/pull/1089), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)[THREESCALE-2876](https://issues.jboss.org/browse/THREESCALE-2876), [PR #1116] (https://github.com/3scale/APIcast/pull/1116)
-- Added http_proxy policy to use an HTTP proxy in api_backed calls. [THREESCALE-2696](https://issues.jboss.org/browse/THREESCALE-2696), [PR #1080](https://github.com/3scale/APIcast/pull/1080)
-- Option to load service configurations one by one lazily [PR #1099](https://github.com/3scale/APIcast/pull/1099), [THREESCALE-3168](https://issues.jboss.org/browse/THREESCALE-3168)
-- New maintenance mode policy, useful for maintenance periods. [PR #1105](https://github.com/3scale/APIcast/pull/1105), [THREESCALE-3189](https://issues.jboss.org/browse/THREESCALE-3189)
-- Remove dnsmasq process for APIcast [PR #1090](https://github.com/3scale/APIcast/pull/1090), [THREESCALE-1555](https://issues.jboss.org/browse/THREESCALE-1555)
-- Enable liquid operations and original request variable on routing policy [PR #1103](https://github.com/3scale/APIcast/pull/1103) [THREESCALE-3239](https://issues.jboss.org/browse/THREESCALE-3239)
-- Allow to use capture function in liquid templates. [PR #1107](https://github.com/3scale/APIcast/pull/1107), [THREESCALE-1911](https://issues.jboss.org/browse/THREESCALE-1911)
-- OAuth 2.0 MTLS policy [PR #1101](https://github.com/3scale/APIcast/pull/1101) [Issue #1003](https://github.com/3scale/APIcast/issues/1003)
-- Add an option to enable keepalive_timeout on gateway [THREESCALE-2886](https://issues.jboss.org/browse/THREESCALE-2886) [PR #1106](https://github.com/3scale/APIcast/pull/1106)
-
-
-### Fixed
-
-- Fix issues when OPENTRACING_FORWARD_HEADER was set [PR #1109](https://github.com/3scale/APIcast/pull/1109), [THREESCALE-1660](https://issues.jboss.org/browse/THREESCALE-1660)
-- New TLS termination policy [PR #1108](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-2898](https://issues.jboss.org/browse/THREESCALE-2898)
-- Fix exception on rate limit policy when window was set as 0. [PR #1113](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-3382](https://issues.jboss.org/browse/THREESCALE-3382)
-
 
 
 ## [3.6.0-rc1] - 2019-07-04
