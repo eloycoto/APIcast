@@ -19,12 +19,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - OAuth 2.0 MTLS policy [PR #1101](https://github.com/3scale/APIcast/pull/1101) [Issue #1003](https://github.com/3scale/APIcast/issues/1003)
 - Add an option to enable keepalive_timeout on gateway [THREESCALE-2886](https://issues.jboss.org/browse/THREESCALE-2886) [PR #1106](https://github.com/3scale/APIcast/pull/1106)
 - Added a new replace path option in routing policy [THREESCALE-3512](https://issues.jboss.org/browse/THREESCALE-3512) [PR #1119](https://github.com/3scale/APIcast/pull/1119) [PR #1121](https://github.com/3scale/APIcast/pull/1121) [PR #1122](https://github.com/3scale/APIcast/pull/1122)
+- Added usage metrics on logging policy [PR #1126](https://github.com/3scale/APIcast/pull/1126), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)
+- Added owner_id on mapping rule and routing_policy [THREESCALE-3623](https://issues.jboss.org/browse/THREESCALE-3623) [PR #1125](https://github.com/3scale/APIcast/pull/1125)
 
 ### Fixed
 
 - Fix issues when OPENTRACING_FORWARD_HEADER was set [PR #1109](https://github.com/3scale/APIcast/pull/1109), [THREESCALE-1660](https://issues.jboss.org/browse/THREESCALE-1660)
 - New TLS termination policy [PR #1108](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-2898](https://issues.jboss.org/browse/THREESCALE-2898)
 - Fix exception on rate limit policy when window was set as 0. [PR #1113](https://github.com/3scale/APIcast/pull/1108), [THREESCALE-3382](https://issues.jboss.org/browse/THREESCALE-3382)
+- Fix issues with escaped characters in uri [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1123](https://github.com/3scale/APIcast/pull/1123)
 
 ## [3.6.0] - 2019-08-30
 

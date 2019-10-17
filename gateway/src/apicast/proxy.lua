@@ -13,6 +13,7 @@ local backend_cache_handler = require('apicast.backend.cache_handler')
 local Usage = require('apicast.usage')
 local errors = require('apicast.errors')
 local Upstream = require('apicast.upstream')
+local escape = require("resty.http.uri_escape")
 
 local assert = assert
 local type = type
@@ -242,7 +243,12 @@ function _M:rewrite(service, context)
     return errors.no_credentials(service)
   end
 
-  local usage, matched_rules = service:get_usage(ngx.req.get_method(), ngx.var.uri)
+  -- URI need to be escaped to be able to match values with special characters
+  -- (like spaces), request_uri is the original one, but rewrite_uri can modify
+  -- the value and mapping rule will not match.
+  -- Example:  if URI is `/foo /bar` it will be translated to `/foo%20/bar`
+  local target_uri = escape.escape_uri(ngx.var.uri)
+  local usage, matched_rules = service:get_usage(ngx.req.get_method(), target_uri)
   local cached_key = { service.id }
 
   -- remove integer keys for serialization
@@ -267,6 +273,7 @@ function _M:rewrite(service, context)
   context.usage:merge(usage)
 
   ctx.usage = context.usage
+  ctx.matched_rules = matched_rules
   ctx.credentials = credentials
 
   var.cached_key = concat(cached_key, ':')
@@ -296,8 +303,15 @@ end
 
 function _M:access(service, usage, credentials, ttl)
   local ctx = ngx.ctx
+  local final_usage = usage or ctx.usage
 
-  return self:authorize(service, usage or ctx.usage, credentials or ctx.credentials, ttl or ctx.ttl)
+  -- If routing policy changes the upstream and it only belongs to a specified
+  -- owner, we need to filter out the usage for APIs that are not used at all.
+  if ctx.context.route_upstream_usage_cleanup then
+    ctx.context:route_upstream_usage_cleanup(final_usage, ctx.matched_rules)
+  end
+  return self:authorize(service, final_usage, credentials or ctx.credentials, ttl or ctx.ttl)
+
 end
 
 local function response_codes_data(status)
