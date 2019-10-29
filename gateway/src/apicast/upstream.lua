@@ -136,6 +136,12 @@ function _M:append_path(path)
     self.uri.query = tmp_query
 end
 
+function _M:update_location(location_name)
+  if location_name then
+    self.location_name = location_name
+  end
+end
+
 --- Rewrite request Host header to what is provided in the argument or in the URL.
 function _M:rewrite_request()
 
