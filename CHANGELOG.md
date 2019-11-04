@@ -6,10 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.7.0-cr1]- 2019-11-04
 
-- Fix issues when TLS is enabled in Lazy mode [#1135](https://github.com/3scale/APIcast/pull/1135), [THREESCALE-3713](https://issues.jboss.org/browse/THREESCALE-3713)
-
 ### Added
 
+- Fix issues when TLS is enabled in Lazy mode [#1135](https://github.com/3scale/APIcast/pull/1135), [THREESCALE-3713](https://issues.jboss.org/browse/THREESCALE-3713)
 - Return 404 back if the upstream is not defined [THREESCALE-3775](https://issues.jboss.org/browse/THREESCALE-3775) [PR #1129](https://github.com/3scale/APIcast/pull/1129)
 
 ## [3.7.0-beta2]- 2019-10-16
@@ -25,12 +24,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [3.7.0-beta1]- 2019-09-13
-
-### Added
-
-- Return 404 back if the upstream is not defined [THREESCALE-3775](https://issues.jboss.org/browse/THREESCALE-3775) [PR #1129](https://github.com/3scale/APIcast/pull/1129)
-
-## [Unreleased]
 
 ### Added
 
@@ -747,3 +740,4 @@ expressed might change in future releases.
 [3.6.0]: https://github.com/3scale/apicast/compare/v3.6.0-rc2...v3.6.0
 [3.7.0-beta1]: https://github.com/3scale/apicast/compare/v3.6.0...v3.7.0-beta1
 [3.7.0-beta2]: https://github.com/3scale/apicast/compare/v3.7.0-beta1...v3.7.0-beta2
+[3.7.0-cr1]: https://github.com/3scale/apicast/compare/v3.7.0-beta2...v3.7.0-cr1
