@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.7.0-cr1]- 2019-11-04
+
+- Fix issues when TLS is enabled in Lazy mode [#1135](https://github.com/3scale/APIcast/pull/1135), [THREESCALE-3713](https://issues.jboss.org/browse/THREESCALE-3713)
+
+### Added
+
+- Return 404 back if the upstream is not defined [THREESCALE-3775](https://issues.jboss.org/browse/THREESCALE-3775) [PR #1129](https://github.com/3scale/APIcast/pull/1129)
+
 ## [3.7.0-beta2]- 2019-10-16
 
 ### Added
