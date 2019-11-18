@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+-  Avoid OIDC flip-flops issues when OIDC connectivity fails, now issuer configuration is cached. [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
+
+
+### Fixed
+
+
 ## [3.7.0] - 2019-11-27
 
 `3.7.0-rc2` was considered final and became `3.7.0`.
