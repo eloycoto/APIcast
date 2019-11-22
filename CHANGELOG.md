@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - When PATH routing was enabled the URL was not correctly escaped [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1150](https://github.com/3scale/APIcast/pull/1150)
+- Add the correct host header when using an http proxy [THREESCALE-4178](https://issues.jboss.org/browse/THREESCALE-4178) [PR #1143](https://github.com/3scale/APIcast/pull/1143)
+
 
 
 ### Fixed

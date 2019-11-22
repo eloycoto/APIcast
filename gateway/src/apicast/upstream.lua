@@ -138,11 +138,13 @@ end
 
 --- Rewrite request Host header to what is provided in the argument or in the URL.
 function _M:rewrite_request()
+
+    local _, err = self:set_host_header()
+    if err then
+      return nil, 'not initialized'
+    end
+
     local uri = self.uri
-
-    if not uri then return nil, 'not initialized' end
-
-    ngx.req.set_header('Host', self.host or host_header(uri))
 
     if uri.path then
         ngx.req.set_uri(prefix_path(uri.path))
@@ -160,6 +162,22 @@ local function exec(self)
     if self.location_name then
         ngx.exec(self.location_name)
     end
+end
+
+function _M:set_host_header()
+    if self.host then
+      ngx.req.set_header('Host', self.host)
+      return self.host, nil
+    end
+
+    -- set Host from uri if Host is not defined
+    local uri = self.uri
+    if not uri then
+      return nil, "Upstream URI not initialized"
+    end
+    local host = host_header(uri)
+    ngx.req.set_header('Host', host)
+    return host, nil
 end
 
 --- Execute the upstream.
@@ -182,7 +200,10 @@ function _M:call(context)
         -- to a proxy
         http_proxy.request(self, proxy_uri)
     else
-        self:rewrite_request()
+        local err = self:rewrite_request()
+        if err then
+          ngx.log(ngx.WARN, "Upstream rewrite request failed:", err)
+        end
     end
 
     if not self.servers then self:resolve() end
