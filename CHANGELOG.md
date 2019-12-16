@@ -23,12 +23,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Added usage metrics on logging policy [PR #1126](https://github.com/3scale/APIcast/pull/1126), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)
-- Added owner_id on mapping rule and routing_policy [THREESCALE-3623](https://issues.jboss.org/browse/THREESCALE-3623) [PR #1125](https://github.com/3scale/APIcast/pull/1125)
+- Added usage metrics to the Logging policy [PR #1126](https://github.com/3scale/APIcast/pull/1126), [THREESCALE-1234](https://issues.jboss.org/browse/THREESCALE-1234)
+- Added `owner_id` to mapping rule and Routing policy [THREESCALE-3623](https://issues.jboss.org/browse/THREESCALE-3623) [PR #1125](https://github.com/3scale/APIcast/pull/1125)
 
 ### Fixed
 
-- Fix issues with escaped characters in uri [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1123](https://github.com/3scale/APIcast/pull/1123)
+- Fix issues with escaped characters in URI [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1123](https://github.com/3scale/APIcast/pull/1123)
 
 
 ## [3.7.0-beta1]- 2019-09-13
