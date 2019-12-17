@@ -8,7 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--  Now the configuration of the issuer is cached to avoid flip-flop issues when OIDC connectivity fails.  [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
+-  Now the configuration of the issuer is cached to avoid flip-flop issues when OIDC connectivity fails. [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
+
+### Fixed
+
+- When PATH routing was enabled the URL was not correctly escaped [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1150](https://github.com/3scale/APIcast/pull/1150)
 
 
 ### Fixed
