@@ -49,18 +49,15 @@ function _M.new(http_backend)
     return _M.new_with_http_client(http_client)
 end
 
+local function init_cache(size)
+  return resty_lrucache.new(size)
+end
+
 function _M.new_with_http_client(http_client)
     local self = setmetatable({ http_client = http_client }, mt)
-    self:init_cache()
+    self.cache = init_cache(cache_max_size)
     return self
 end
-
-
-function _M:init_cache()
-  self.cache = resty_lrucache.new(cache_max_size)
-  return self
-end
-
 
 --- Fetch and return OIDC configuration from cache if it exists.
 function _M:issuer_in_cache(issuer)
@@ -74,11 +71,12 @@ end
 --- Insert the OIDC configuration for the issuer in the local cache with a
 --limit. If no ttl set will be 0
 function _M:save_issuer_in_cache(issuer, config, ttl)
-  local expires = tonumber(ttl) or 0
-
   if not self.cache then
     return nil
   end
+
+  local expires = tonumber(ttl) or 0
+
   self.cache:set(issuer, config, expires)
   ngx.log(ngx.DEBUG, "OIDC configuration for issuer='"..issuer.."' stored in cache for "..expires.." seconds")
 end

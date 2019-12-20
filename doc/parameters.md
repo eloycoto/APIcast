@@ -26,7 +26,7 @@ Specifies the period (in seconds) that the configuration will be stored in the c
 - a positive number ( > 0 ): specifies the interval in seconds between configuration reload. For example, when APIcast is started with `APICAST_CONFIGURATION_CACHE=300` and `APICAST_CONFIGURATION_CACHE=boot`, it will load the configuration on boot, and will reload it every 5 minutes (300 seconds).
 - a negative number ( < 0 ): disables reloading. The cache entries will never be removed from the cache once stored, and the configuration will never be reloaded.
 
-This parameter is also used to store OpenID discovery configuration in the local cache, as the same behaviour as described above.
+This parameter is also used to store OpenID discovery configuration in the local cache, as the same behavior as described above.
 
 ### `APICAST_CONFIGURATION_LOADER`
 
