@@ -1,7 +1,7 @@
 use lib 't';
 use Test::APIcast::Blackbox 'no_plan';
 
-require("t/http_proxy.pl");
+require("http_proxy.pl");
 
 repeat_each(3);
 
