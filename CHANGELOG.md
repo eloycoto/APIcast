@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Now the configuration of the issuer is cached to avoid flip-flop issues when OIDC connectivity fails. [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
 - Openresty dependencies comes now from RedHat build system. [THREESCALE-3771](https://issues.jboss.org/browse/THREESCALE-3771) [PR #1145](https://github.com/3scale/APIcast/pull/1145)
 - Added HTTP2 support [THREESCALE-3271](https://issues.jboss.org/browse/THREESCALE-3271) [PR #1128](https://github.com/3scale/APIcast/pull/1128)
-
+- Websocket support. [THREESCALE-4019](https://issues.jboss.org/browse/THREESCALE-4019) [PR #1152](https://github.com/3scale/APIcast/pull/1152)
 
 ### Fixed
 
