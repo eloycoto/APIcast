@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--  Now the configuration of the issuer is cached to avoid flip-flop issues when OIDC connectivity fails. [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
+- Now the configuration of the issuer is cached to avoid flip-flop issues when OIDC connectivity fails. [THREESCALE-3809](https://issues.jboss.org/browse/THREESCALE-3809) [PR #1141](https://github.com/3scale/APIcast/pull/1141)
+- Openresty dependencies comes now from RedHat build system. [THREESCALE-3771](https://issues.jboss.org/browse/THREESCALE-3771) [PR #1145](https://github.com/3scale/APIcast/pull/1145)
+
 
 ### Fixed
 
