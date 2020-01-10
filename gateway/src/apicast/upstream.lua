@@ -22,7 +22,16 @@ local _M = {
 }
 
 local function proxy_pass(upstream)
-    return str_format('%s://%s', upstream.uri.scheme, upstream.upstream_name)
+    local scheme = upstream.uri.scheme
+    if upstream.uri.scheme == "wss" then
+        scheme = "https"
+    end
+
+    if upstream.uri.scheme == "ws" then
+        scheme = "http"
+    end
+
+    return str_format('%s://%s', scheme, upstream.upstream_name)
 end
 
 local mt = {
@@ -38,7 +47,6 @@ function _M.new(url)
     if not url or url == cjson.null then
         return nil, 'Upstream cannot be null'
     end
-
     local uri, err = url_helper.parse_url(url)
     if err then
         return nil, 'invalid upstream'

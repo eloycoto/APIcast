@@ -248,6 +248,17 @@ describe('Upstream', function()
 
                 assert.equal('http://upstream', ngx.var.proxy_pass)
             end)
+
+            it('works with websocket url', function()
+                local upstream = Upstream.new('ws://example.com')
+                upstream:call({})
+                assert.equal('http://upstream', ngx.var.proxy_pass)
+
+                upstream = Upstream.new('wss://example.com')
+                upstream:call({})
+                assert.equal('https://upstream', ngx.var.proxy_pass)
+            end)
+
         end)
     end)
 
