@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [3.8.0-dr1] 2019-01-15
 
 ### Added
 
@@ -18,7 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - When PATH routing was enabled the URL was not correctly escaped [THREESCALE-3468](https://issues.jboss.org/browse/THREESCALE-3468) [PR #1150](https://github.com/3scale/APIcast/pull/1150)
 - Add the correct host header when using an http proxy [THREESCALE-4178](https://issues.jboss.org/browse/THREESCALE-4178) [PR #1143](https://github.com/3scale/APIcast/pull/1143)
 - Normalize policy names capitalization [THREESCALE-4150](https://issues.jboss.org/browse/THREESCALE-4150) [PR #1154](https://github.com/3scale/APIcast/pull/1154)
-
 
 
 
@@ -772,3 +771,4 @@ expressed might change in future releases.
 [3.7.0-cr1]: https://github.com/3scale/apicast/compare/v3.7.0-beta2...v3.7.0-cr1
 [3.7.0-cr2]: https://github.com/3scale/apicast/compare/v3.7.0-cr1...v3.7.0-cr2
 [3.7.0]: https://github.com/3scale/apicast/compare/v3.7.0-cr2...v3.7.0
+[3.8.0-dr1]: https://github.com/3scale/apicast/compare/v3.7.0...v3.8.0-dr1
