@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add the correct host header when using an http proxy [THREESCALE-4178](https://issues.jboss.org/browse/THREESCALE-4178) [PR #1143](https://github.com/3scale/APIcast/pull/1143)
 - Normalize policy names capitalization [THREESCALE-4150](https://issues.jboss.org/browse/THREESCALE-4150) [PR #1154](https://github.com/3scale/APIcast/pull/1154)
 - Fix issues with non-alphanumeric variables in liquid [THREESCALE-3968](https://issues.jboss.org/browse/THREESCALE-3968) [PR #1158](https://github.com/3scale/APIcast/pull/1158)
+- Fix issues with double mapping rules [THREESCALE-3950](https://issues.jboss.org/browse/THREESCALE-3950) [PR #1159](https://github.com/3scale/APIcast/pull/1159)
+
 
 
 ### Fixed
