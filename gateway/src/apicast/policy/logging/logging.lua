@@ -79,6 +79,7 @@ local function get_request_context(context)
   ctx.usage = context.usage
   ctx.service = context.service or {}
   ctx.original_request = context.original_request
+  ctx.jwt = context.jwt or {}
   return LinkedList.readonly(ctx, ngx.var)
 end
 
