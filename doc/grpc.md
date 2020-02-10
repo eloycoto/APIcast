@@ -1,25 +1,24 @@
-# GRPC on APICast
+# gRPC on APIcast
 
-On Apicast 3.8 full HTTP2 protocol is supported, this enable APICast to handle
-GRPC connections end to end taking care APICast about Authentication, headers
-modification, etc..
+APIcast 3.8 fully supports the HTTP/2 protocol. This enables APIcast to handle
+gRPC connections end-to-end, taking care of APIcast authentication, headers
+modification, and so on.
 
-HTTP2 is only enabled in the TLS port, and it’s not enabled in the plaintext
-port. The main reason why is only enabled in TLS is to make sure that both HTTP
-1.1 and HTTP2 protocols are supported. ALPN(Application-Layer Protocol
-Negotiation) decides within the TLS hello exchanges what protocol should be
-used. HTTP2 always takes precedence.
+HTTP/2 is only enabled in the Transport Layer Security (TLS) port. It is not
+enabled in the plaintext port. It is only enabled in TLS to support both HTTP
+1.1 and 1.1 and HTTP2 protocols are supported. Within the TLS hello exchanges,
+the Application-Layer Protocol Negotiation (ALPN) uses the appropriate protocol.
+HTTP2 always takes precedence.
 
-For authentication, headers authentication or openID (Json Web tokens)  is
-highly recommended, so it’ll be more transparent for the GRPC endpoints and it’s
-easy to add in the GRPC clients.
+Use headers authentication or OpenID, JSON Web Tokens (JWT), for transparency of
+the gRPC endpoints and to make it easier to add in the gRPC clients.
 
 The GRPC endpoint server should also listen in TLS, MTLS can be enabled or not,
 but the endpoint should finish TLS connections to be able to work as expected.
 
-The only work needed in APICast to enable full GRPC traffic is to enable the
-GRPC policy in the given service, so the protocol used will be full HTTP2. This
-is because nginx directive does not support ALPN at all.
+In APIcast, for full gRPC traffic, enable the gRPC policy in the given service.
+The protocol used will then be full HTTP/2. This is because NGINX directives do
+not support ALPN.
 
 ### Minimal APIcast configuration
 
@@ -76,7 +75,7 @@ is because nginx directive does not support ALPN at all.
     }
 ```
 
-### GRPC client information
+### gRPC client information
 
 - Server TLS listener
 
@@ -98,8 +97,8 @@ Example using golang:
 
 Client header metadata using golang:
 
-This piece adds metadata as headers, the main reason for using this is to send
-the credentials in header, so it's easy to read.
+This snippet adds metadata as headers to send the credentials in the header,
+making it easier to read.
 
 ```
 
