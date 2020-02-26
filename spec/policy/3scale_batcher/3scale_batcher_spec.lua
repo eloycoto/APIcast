@@ -76,7 +76,8 @@ describe('3scale batcher policy', function()
         usage = usage,
         credentials = credentials,
         -- cache_handler does nothing because we just need to check if it's called
-        cache_handler = function() end
+        cache_handler = function() end,
+        publish_backend_auth = function() end
       }
 
       stub(context, 'cache_handler')
