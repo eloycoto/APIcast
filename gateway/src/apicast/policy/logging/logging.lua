@@ -56,7 +56,7 @@ function _M:load_condition(config)
 
   ngx.log(ngx.DEBUG, 'Enabling extended log with conditions')
   local operations = {}
-  for _, operation in ipairs(config.condition.operations) do
+  for _, operation in ipairs(config.condition.operations or {}) do
     table.insert( operations,
       Operation.new(
         operation.match, operation.match_type,
