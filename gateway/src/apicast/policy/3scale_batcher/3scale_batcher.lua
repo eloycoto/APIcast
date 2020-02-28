@@ -204,6 +204,7 @@ function _M:access(context)
   else
     local formatted_usage = usage:format()
     local backend_res = backend:authorize(formatted_usage, credentials)
+    context:publish_backend_auth(backend_res)
     local backend_status = backend_res.status
     local cache_handler = context.cache_handler -- Set by Caching policy
 
