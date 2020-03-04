@@ -447,3 +447,27 @@ connections.
 
 By default Gateway does not enable it, and the keepalive timeout on nginx is set
 to [75 seconds](http://nginx.org/en/docs/http/ngx_http_core_module.html#keepalive_timeout)
+
+
+### `APICAST_CACHE_STATUS_CODES`
+
+**Default:** 200 302
+**Value:** string
+
+When the response code from upstream match one of the status code defined in
+this environment varible, the response content will be cached in Nginx for the
+Headers cache time value, or the maximum time defined by
+`APICAST_CACHE_MAX_TIME` env variable.
+
+
+### `APICAST_CACHE_MAX_TIME`
+
+**Default:** 1m
+**Value:** string
+
+When the response is selected to be cached in the system, this variable decides
+the maximum time to be cached. If no header is set, the time to be cached will
+be the defined one.
+
+The format for this value is defined by [`proxy_cache_valid` nginx
+directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_valid)
