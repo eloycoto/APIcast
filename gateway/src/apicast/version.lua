@@ -1,1 +1,1 @@
-return "3.8.0-alpha2"
+return "3.8.0"
