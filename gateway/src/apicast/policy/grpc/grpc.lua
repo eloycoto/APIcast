@@ -21,6 +21,19 @@ function _M:rewrite(context)
   end
 end
 
+function _M:content(context)
+  -- This is needed within the combination of the routing policy, if not the
+  -- upstream got overwritten and balancer phase is called before.
+  if not context.upstream_location_name then
+    return
+  end
+
+  if ngx.var.server_protocol ~= "HTTP/2.0" then
+    ngx.var.host = context.upstream_location_name
+  end
+
+end
+
 function _M:balancer(context)
   if not context.upstream_location_name then
     return
@@ -37,7 +50,7 @@ function _M:balancer(context)
   local peers = balancer:peers(upstream.servers)
   local peer, err = balancer:select_peer(peers)
   if err then
-    ngx.log(ngx.WARN, "Cannot get a peer for the given upstream", err)
+    ngx.log(ngx.WARN, "Cannot get a peer for the given upstream: ", err)
     return
   end
 
