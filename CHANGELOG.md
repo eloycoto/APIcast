@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Fixed naming issues in policies [THREESCALE-4150](https://issues.jboss.org/browse/THREESCALE-4150) [PR #1167](https://github.com/3scale/APIcast/pull/1167)
 - Fixed issues on invalid config in logging policy [THREESCALE-4605](https://issues.jboss.org/browse/THREESCALE-4605) [PR #1168](https://github.com/3scale/APIcast/pull/1168)
-- Fixed issues with routing policy and GRPC one [THREESCALE-4684](https://issues.jboss.org/browse/THREESCALE-4684) [PR #1177](https://github.com/3scale/APIcast/pull/1177)
+- Fixed issues with routing policy and GRPC one [THREESCALE-4684](https://issues.jboss.org/browse/THREESCALE-4684) [PR #1177](https://github.com/3scale/APIcast/pull/1177) [PR #1179](https://github.com/3scale/APIcast/pull/1179)
 
 ## [3.7.0-alpha2]
 

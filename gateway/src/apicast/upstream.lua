@@ -221,7 +221,9 @@ function _M:call(context)
     end
 
     if not self.servers then self:resolve() end
-
+    if context.upstream_location_name then
+        self.location_name = context.upstream_location_name
+    end
     context[self.upstream_name] = self
 
     return exec(self)
