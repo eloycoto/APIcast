@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+### Added
+
+- Added Rate-limit headers policy [THREESCALE-3795](https://issues.jboss.org/browse/THREESCALE-3795) [PR #1166](https://github.com/3scale/APIcast/pull/1166)
 
 ## [3.8.0] - 2020-03-24
 
-`3.8.0-rc1` was considered final and became `3.8.0`.
+`3.8.0-cr1` was considered final and became `3.8.0`.
 
-## [3.8.0-rc1] - 2020-03-07
+## [3.8.0-cr1] - 2020-03-07
 
 ### Fixed
 - Fixed naming issues in policies [THREESCALE-4150](https://issues.jboss.org/browse/THREESCALE-4150) [PR #1167](https://github.com/3scale/APIcast/pull/1167)
@@ -795,4 +800,4 @@ expressed might change in future releases.
 [3.7.0]: https://github.com/3scale/apicast/compare/v3.7.0-cr2...v3.7.0
 [3.8.0-alpha1]: https://github.com/3scale/apicast/compare/v3.7.0...v3.8.0-alpha1
 [3.8.0-alpha2]: https://github.com/3scale/apicast/compare/v3.8.0-alpha1...v3.8.0-alpha2
-[3.8.0-rc1]: https://github.com/3scale/apicast/compare/v3.8.0-alpha2...v3.8.0-rc1
+[3.8.0-cr1]: https://github.com/3scale/apicast/compare/v3.8.0-alpha2...v3.8.0-cr1
