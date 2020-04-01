@@ -454,8 +454,8 @@ to [75 seconds](http://nginx.org/en/docs/http/ngx_http_core_module.html#keepaliv
 **Default:** 200 302
 **Value:** string
 
-When the response code from upstream match one of the status code defined in
-this environment varible, the response content will be cached in Nginx for the
+When the response code from upstream matches one of the status codes defined in
+this environment variable, the response content will be cached in NGINX for the
 Headers cache time value, or the maximum time defined by
 `APICAST_CACHE_MAX_TIME` env variable.
 
@@ -465,9 +465,9 @@ Headers cache time value, or the maximum time defined by
 **Default:** 1m
 **Value:** string
 
-When the response is selected to be cached in the system, this variable decides
+When the response is selected to be cached in the system, the value of this variable indicates
 the maximum time to be cached. If no header is set, the time to be cached will
 be the defined one.
 
-The format for this value is defined by [`proxy_cache_valid` nginx
+The format for this value is defined by the [`proxy_cache_valid` NGINX
 directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_valid)

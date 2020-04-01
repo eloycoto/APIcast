@@ -3,7 +3,7 @@
   "name": "Content caching",
   "summary": "Option to enable content caching on responses.",
   "description": [
-    "With this policy a new way to enable caching in APICast is enabled based on any liquid filter operation"
+    "With this policy a new way to enable caching in APICast is enabled based on any Liquid filter operation"
   ],
   "version": "builtin",
   "configuration": {
