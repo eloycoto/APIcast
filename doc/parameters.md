@@ -459,15 +459,20 @@ this environment variable, the response content will be cached in NGINX for the
 Headers cache time value, or the maximum time defined by
 `APICAST_CACHE_MAX_TIME` env variable.
 
+This parameter is only used by the services that are using content caching
+policy.
 
 ### `APICAST_CACHE_MAX_TIME`
 
 **Default:** 1m
 **Value:** string
 
-When the response is selected to be cached in the system, the value of this variable indicates
-the maximum time to be cached. If no header is set, the time to be cached will
-be the defined one.
+When the response is selected to be cached in the system, the value of this
+variable indicates the maximum time to be cached. If cache-control header is not
+set, the time to be cached will be the defined one.
 
 The format for this value is defined by the [`proxy_cache_valid` NGINX
 directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_valid)
+
+This parameter is only used by the services that are using content caching
+policy.

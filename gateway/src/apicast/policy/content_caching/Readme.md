@@ -4,6 +4,8 @@ This policy allows to enable and disable caching based on customized conditions.
 conditions can only be applied on the client request, where upstream responses
 cannot be used in this policy.
 
+This policy will respect all Cache-Control headers, if the endpoint send a
+different timeout, no-cache, etc. this policy will keep the upstream response.
 
 ## Example configuration
 
@@ -36,7 +38,7 @@ cannot be used in this policy.
 ## Recommended configuration
 
 - Set `APICast Policy caching` as disabled, for any of the following methods: POST, PUT, DELETE.
-- If one condition matches, and it enables the cache, the execution will be
+- If one rule matches, and it enables the cache, the execution will be
   stopped and it will be not disabled. Sort by priority is important here.
 
 ## Upstream response headers
