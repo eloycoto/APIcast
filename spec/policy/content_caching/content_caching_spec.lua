@@ -15,7 +15,7 @@ describe('Content Caching policy', function()
         rules = {
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -64,7 +64,7 @@ describe('Content Caching policy', function()
         rules = {
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "or",
               operations = {
@@ -179,7 +179,7 @@ describe('Content Caching policy', function()
         rules = {
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -189,7 +189,7 @@ describe('Content Caching policy', function()
           },
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -213,7 +213,7 @@ describe('Content Caching policy', function()
         rules = {
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -223,7 +223,7 @@ describe('Content Caching policy', function()
           },
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -246,7 +246,7 @@ describe('Content Caching policy', function()
         rules = {
           {
             cache = true,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {
@@ -256,7 +256,7 @@ describe('Content Caching policy', function()
           },
           {
             cache = false,
-            header = nil,
+            header = "",
             condition = {
               combine_op = "and",
               operations = {

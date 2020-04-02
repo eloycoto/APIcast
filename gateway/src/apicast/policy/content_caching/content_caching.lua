@@ -32,7 +32,7 @@ function _M:access(context)
       -- This is because `proxy_no_cache` directive is used, so we need to make
       -- the negative here.
       ngx.var.cache_request = (rule.cache and "" or "true")
-      if rule.header then
+      if rule.header and rule.header ~= "" then
         context[self] = {header = rule.header}
       end
       return

@@ -197,7 +197,7 @@
             "window": {
               "type": "integer",
               "description": "The time window in seconds before the request count is reset",
-              "exclusiveMinimum": 0,
+              "minimum": 0,
               "default": 1
             }
           }
