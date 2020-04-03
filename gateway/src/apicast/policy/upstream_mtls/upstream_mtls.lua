@@ -104,7 +104,7 @@ end
 function _M.set_certs(cert, key)
   local r = get_request()
   if not r then
-    ngx.log(ngx.ERR, "No valid request")
+    ngx.log(ngx.ERR, "Invalid request")
     return
   end
 

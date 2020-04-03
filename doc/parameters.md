@@ -165,7 +165,7 @@ It can be used to first load policies from a development directory or to load ex
 
 The path to the key of the client SSL certificate.
 
-This parameter can be override by the Upstream_TLS policy.
+This parameter can be overridden by the Upstream_TLS policy.
 
 ### `APICAST_PROXY_HTTPS_CERTIFICATE`
 
@@ -177,7 +177,7 @@ The path to the client SSL certificate that APIcast will use when connecting
 with the upstream. Notice that this certificate will be used for all the
 services in the configuration.
 
-This parameter can be override by the Upstream_TLS policy.
+This parameter can be overridden by the Upstream_TLS policy.
 
 ### `APICAST_PROXY_HTTPS_PASSWORD_FILE`
 

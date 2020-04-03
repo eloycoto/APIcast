@@ -1,6 +1,6 @@
-# Upstream MTLs policy.
+# Upstream Mutual TLS policy
 
-This policy enables the MTLS policy per service, so connection to the upstream
+This policy enables the Mutual TLS policy per API, so connection to the upstream
 API will use the certificates defined in this policy.
 
 ## Configuration
@@ -39,6 +39,6 @@ When using http forms and file upload
 
 ## Additional considerations
 
-This policy will overwrite `APICAST_PROXY_HTTPS_CERTIFICATE_KEY` and
-`APICAST_PROXY_HTTPS_CERTIFICATE` values and it'll use the certificates set by
-the policy, so those ENV variables will have no effect.
+This policy overwrites `APICAST_PROXY_HTTPS_CERTIFICATE_KEY` and
+`APICAST_PROXY_HTTPS_CERTIFICATE` values and it uses the certificates set by
+the policy, so those environment variables will have no effect.
