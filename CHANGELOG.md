@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- Fixed issues with liquid replaces [THREESCALE-4937](https://issues.jboss.org/browse/THREESCALE-4937) [PR #1185](https://github.com/3scale/APIcast/pull/1185)
+
 ### Added
 
 - Added Rate-limit headers policy [THREESCALE-3795](https://issues.jboss.org/browse/THREESCALE-3795) [PR #1166](https://github.com/3scale/APIcast/pull/1166)
