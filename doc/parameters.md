@@ -33,10 +33,14 @@ This parameter is also used to store OpenID discovery configuration in the local
 **Values:** _a positive number_
 **Default:** 0
 
-When configuration cannot be gather correctly due to network errors, or any
-other issues, older configuration, that it's stored in the cache, can be used
-for the specified number of times, so request will not fail due service it's not
-found.
+You can use this variable to specify the number of times that gather
+configuration can consequently fail. This is useful when any external issue on
+reload Apicast configuration, so APICast will use stale information, and it'll
+not delete the caching configuration. 
+
+Note, if a service is deleted, and this value is set, the service will be
+present in APICast configuration for the number of times that this parameter
+set.
 
 The number means, that `APICAST_CONFIGURATION_CACHE` time will be multiplied by
 the number that has been used in `APICAST_CONFIGURATION_CACHE_STALE`
