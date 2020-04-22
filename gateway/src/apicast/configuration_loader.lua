@@ -26,6 +26,16 @@ local _M = {
   _VERSION = '0.1'
 }
 
+-- stale_ttl_multiplier returns a positive integer for multiplied ttl value for
+-- apicast cache config
+local function stale_ttl_multiplier()
+  local result = tonumber(env.value('APICAST_CONFIGURATION_CACHE_STALE') or 1) or 1
+  if result <= 0 then
+    return 1
+  end
+  return result
+end
+
 function _M.load(host)
   local configuration = env.get('APICAST_CONFIGURATION')
   local uri = resty_url.parse(configuration, [[\w+]])
@@ -87,7 +97,7 @@ function _M.configure(configuration, contents)
   end
 
   if config then
-    configuration:store(config, ttl())
+    configuration:store(config, ttl() * stale_ttl_multiplier())
     collectgarbage()
     return config
   end

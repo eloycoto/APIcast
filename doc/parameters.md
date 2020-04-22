@@ -8,8 +8,8 @@ Note that when deploying APIcast v2 with OpenShift, some of these parameters can
 
 ### `APICAST_BACKEND_CACHE_HANDLER`
 
-**Values:** strict | resilient  
-**Default:** strict  
+**Values:** strict | resilient
+**Default:** strict
 **Deprecated:** Use [Caching](../gateway/src/apicast/policy/caching/apicast-policy.json) policy instead.
 
 Defines how the authorization cache behaves when backend is unavailable.
@@ -18,7 +18,7 @@ Resilient will do so only on getting authorization denied from backend.
 
 ### `APICAST_CONFIGURATION_CACHE`
 
-**Values:** _a number_  
+**Values:** _a number_
 **Default:** 0
 
 Specifies the period (in seconds) that the configuration will be stored in the cache for. Can take the following values:
@@ -27,6 +27,25 @@ Specifies the period (in seconds) that the configuration will be stored in the c
 - a negative number ( < 0 ): disables reloading. The cache entries will never be removed from the cache once stored, and the configuration will never be reloaded.
 
 This parameter is also used to store OpenID discovery configuration in the local cache, as the same behavior as described above.
+
+### `APICAST_CONFIGURATION_CACHE_STALE`
+
+**Values:** _a positive number_
+**Default:** 0
+
+When configuration cannot be gather correctly due to network errors, or any
+other issues, older configuration, that it's stored in the cache, can be used
+for the specified number of times, so request will not fail due service it's not
+found.
+
+The number means, that `APICAST_CONFIGURATION_CACHE` time will be multiplied by
+the number that has been used in `APICAST_CONFIGURATION_CACHE_STALE`
+
+Example:
+  - APICAST_CONFIGURATION_CACHE_STALE: 1 && APICAST_CONFIGURATION_CACHE: 30:
+    Cache will be stored for 30 seconds.
+  - APICAST_CONFIGURATION_CACHE_STALE: 5 && APICAST_CONFIGURATION_CACHE: 30:
+    Cache will be stored for 150 seconds.
 
 ### `APICAST_CONFIGURATION_LOADER`
 

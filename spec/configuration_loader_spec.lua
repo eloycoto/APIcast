@@ -1,4 +1,5 @@
 local env = require 'resty.env'
+local match = require("luassert.match")
 
 insulate('Configuration object', function()
 
@@ -89,6 +90,65 @@ insulate('Configuration object', function()
       }})))
 
       assert.truthy(config:find_by_id('42'))
+    end)
+
+    describe('Cache TTL', function()
+      local config = {}
+
+      before_each(function()
+        config = configuration_store.new()
+        env.set('APICAST_CONFIGURATION_CACHE', 120)
+      end)
+
+      it('stale is not set', function()
+        stub(configuration_store, "store")
+        assert.truthy(_M.configure(config, '{}'))
+
+        assert.stub(configuration_store.store).was.called()
+        assert.stub(configuration_store.store).was_called_with(
+          match.is_not_nil(), match.is_not_nil(), 120)
+      end)
+
+      it('stale is 0', function()
+        env.set('APICAST_CONFIGURATION_CACHE_STALE', 0)
+        stub(configuration_store, "store")
+        assert.truthy(_M.configure(config, '{}'))
+
+        assert.stub(configuration_store.store).was.called()
+        assert.stub(configuration_store.store).was_called_with(
+          match.is_not_nil(), match.is_not_nil(), 120)
+      end)
+
+      it('stale is negative', function()
+        env.set('APICAST_CONFIGURATION_CACHE_STALE', -1)
+        stub(configuration_store, "store")
+        assert.truthy(_M.configure(config, '{}'))
+
+        assert.stub(configuration_store.store).was.called()
+        assert.stub(configuration_store.store).was_called_with(
+          match.is_not_nil(), match.is_not_nil(), 120)
+      end)
+
+      it('stale is positive', function()
+        env.set('APICAST_CONFIGURATION_CACHE_STALE', 2)
+        stub(configuration_store, "store")
+        assert.truthy(_M.configure(config, '{}'))
+
+        assert.stub(configuration_store.store).was.called()
+        assert.stub(configuration_store.store).was_called_with(
+          match.is_not_nil(), match.is_not_nil(), 240)
+      end)
+
+      it('stale is positive but not a number', function()
+        env.set('APICAST_CONFIGURATION_CACHE_STALE', 'foobar')
+        stub(configuration_store, "store")
+        assert.truthy(_M.configure(config, '{}'))
+
+        assert.stub(configuration_store.store).was.called()
+        assert.stub(configuration_store.store).was_called_with(
+          match.is_not_nil(), match.is_not_nil(), 120)
+      end)
+
     end)
   end)
 
