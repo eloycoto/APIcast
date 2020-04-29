@@ -9,6 +9,14 @@
     "liquid exposed variable."
   ],
   "version": "builtin",
+  "order": {
+    "before": [
+      {
+        "name": "apicast",
+        "version": "builtin"
+      }
+    ]
+  },
   "configuration": {
     "definitions": {
       "operation": {
