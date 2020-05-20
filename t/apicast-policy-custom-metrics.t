@@ -63,6 +63,16 @@ __DATA__
       end
     }
   }
+  # Report transactions for the first one
+  location /transactions.xml {
+    content_by_lua_block {
+      ngx.req.read_body()
+      local post_args = ngx.req.get_post_args()
+      require('luassert').same(post_args["transactions[0][usage][foo]"], "1")
+      require('luassert').same(post_args["transactions[0][user_key]"], "value")
+      ngx.exit(200)
+    }
+  }
 --- upstream
   location / {
      content_by_lua_block {
@@ -131,6 +141,17 @@ __DATA__
         require('luassert').same(ngx.decode_args(expected), ngx.req.get_uri_args(0))
         ngx.exit(200)
       end
+    }
+  }
+
+  # Report transactions for the first one
+  location /transactions.xml {
+    content_by_lua_block {
+      ngx.req.read_body()
+      local post_args = ngx.req.get_post_args()
+      require('luassert').same(post_args["transactions[0][usage][foo]"], "2")
+      require('luassert').same(post_args["transactions[0][user_key]"], "value")
+      ngx.exit(200)
     }
   }
 --- upstream
@@ -206,6 +227,17 @@ __DATA__
       end
     }
   }
+
+  # Report transactions for the first one
+  location /transactions.xml {
+    content_by_lua_block {
+      ngx.req.read_body()
+      local post_args = ngx.req.get_post_args()
+      require('luassert').same(post_args["transactions[0][usage][foo_200]"], "1")
+      require('luassert').same(post_args["transactions[0][user_key]"], "value")
+      ngx.exit(200)
+    }
+  }
 --- upstream
   location / {
      content_by_lua_block {
@@ -219,7 +251,7 @@ __DATA__
 --- no_error_log
 [error]
 
-=== TEST 4: Rule does not left, metric is not added
+=== TEST 4: Rule does not match, metric is not added
 --- configuration
 {
   "services": [
@@ -275,6 +307,17 @@ __DATA__
         require('luassert').same(ngx.decode_args(expected), ngx.req.get_uri_args(0))
         ngx.exit(200)
       end
+    }
+  }
+
+  # Report transactions for the first one
+  location /transactions.xml {
+    content_by_lua_block {
+      ngx.req.read_body()
+      local post_args = ngx.req.get_post_args()
+      require('luassert').same(post_args["transactions[0][usage][foo_400]"], "1")
+      require('luassert').same(post_args["transactions[0][user_key]"], "value")
+      ngx.exit(200)
     }
   }
 --- upstream
@@ -357,6 +400,18 @@ __DATA__
         require('luassert').same(ngx.decode_args(expected), ngx.req.get_uri_args(0))
         ngx.exit(200)
       end
+    }
+  }
+
+  # Report transactions for the first one
+  location /transactions.xml {
+    content_by_lua_block {
+      ngx.req.read_body()
+      local post_args = ngx.req.get_post_args()
+      require('luassert').same(post_args["transactions[0][usage][foo]"], "1")
+      require('luassert').same(post_args["transactions[0][usage][hits_200]"], "1")
+      require('luassert').same(post_args["transactions[0][user_key]"], "value")
+      ngx.exit(200)
     }
   }
 --- upstream

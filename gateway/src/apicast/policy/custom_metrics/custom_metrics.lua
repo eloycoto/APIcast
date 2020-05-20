@@ -5,17 +5,23 @@ local _M  = require('apicast.policy').new('Custom Metrics', 'builtin')
 local Condition = require('apicast.conditions.condition')
 local LinkedList = require('apicast.linked_list')
 local Operation = require('apicast.conditions.operation')
+local ReportsBatch = require('apicast.policy.3scale_batcher.reports_batch')
 local TemplateString = require('apicast.template_string')
 local Usage = require('apicast.usage')
+local backend_client = require('apicast.backend_client')
+local deepcopy = require('pl.tablex').deepcopy
+local http_ng_resty = require('resty.http_ng.backend.resty')
 
-local tinsert = table.insert
+local ipairs = ipairs
+local pairs = pairs
 local str_len = string.len
+local tinsert = table.insert
+
 local default_combine_op = "and"
 local default_template_type = "plain"
 local liquid_template_type = "liquid"
 
 local new = _M.new
-
 
 local function get_context(context)
 
@@ -82,21 +88,55 @@ function _M.new(config)
   return self
 end
 
+-- report: Report the given usage information to the backend
+function _M.report(context, usage)
+  local backend = backend_client:new(context.service, http_ng_resty)
+  local reports = {}
+  for key, value in pairs(usage.deltas) do
+    local result = deepcopy(context.credentials)
+    result.metric = key
+    result.value = value
+    result.service_id = context.service.id
+    tinsert(reports, result)
+  end
+
+  local res = backend:report(ReportsBatch.new(context.service.id, reports))
+  if res.status ~= 200 then
+    ngx.log(ngx.INFO, "Custom metric report usage failed")
+  end
+end
 
 function _M:post_action(context)
   -- context with all variables are needed to retrieve information about API
   -- response
   local ctx = get_context(context)
+
+  -- We initilize the usage, and if any rule match, we report the usage to
+  -- backend.
+  local match = false
+  local usage = Usage.new()
+
   for _, rule in ipairs(self.rules) do
     if rule.condition:evaluate(ctx) then
       local metric = rule.metric:render(ctx)
       if str_len(metric) > 0 then
-        local usage = Usage.new()
         usage:add(metric, tonumber(rule.increment:render(ctx)) or 0)
-        context.usage:merge(usage)
+        match = true
       end
     end
   end
+
+  if not match then
+    return
+  end
+
+  -- If cached key authrep call will happen on APICast policy, so no need to
+  -- report only one metric. If no cached key will report only the new metrics.
+  if ngx.var.cached_key then
+    context.usage:merge(usage)
+    return
+  end
+  self.report(context, usage)
 end
 
 return _M

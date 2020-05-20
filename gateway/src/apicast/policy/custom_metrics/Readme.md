@@ -6,11 +6,73 @@ code status, headers or different Nginx variables.
 
 ## Caveats:
 
-Due to this needs some information from the upstream API, if the authrep with
-backend happens before the upstream call (Is not cached) the metric will not be
-incremented. This policy only increments metrics when the authrep is cached.
+- When auth happens before request send to Upstream API, a second call to
+  backend will be made to report the new metrics to the UpstreamAPI.
+- This policy does not work with batching policy.
+- Metrics need to be created in the admin portal before submit it.
 
-This policy does not work with batching policy.
+## Request flow
+
+```
+     ┌────┐          ┌───────┐                                                       ┌──────────┐          ┌───────────┐     
+     │User│          │APICast│                                                       │APIsonator│          │UpstreamAPI│     
+     └─┬──┘          └───┬───┘                                                       └────┬─────┘          └─────┬─────┘     
+       │                 │                                                                │                      │           
+       │                 │                   ╔═════════════════════════════════╗          │                      │           
+═══════╪═════════════════╪═══════════════════╣ First request (Auth not cached) ╠══════════╪══════════════════════╪═══════════
+       │                 │                   ╚═════════════════════════════════╝          │                      │           
+       │                 │                                                                │                      │           
+       │    Get /foo     │                                                                │                      │           
+       │ ───────────────>│                                                                │                      │           
+       │                 │                                                                │                      │           
+       │                 │       POST  /transactions/authrep.xml Metrics: {"Hit":1}       │                      │           
+       │                 │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>                      │           
+       │                 │                                                                │                      │           
+       │                 │                             200 OK                             │                      │           
+       │                 │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                       │           
+       │                 │                                                                │                      │           
+       │                 │                                       Get /foo                 │                      │           
+       │                 │──────────────────────────────────────────────────────────────────────────────────────>│           
+       │                 │                                                                │                      │           
+       │                 │                                        200 OK                  │                      │           
+       │                 │<──────────────────────────────────────────────────────────────────────────────────────│           
+       │                 │                                                                │                      │           
+       │     200 OK      │                                                                │                      │           
+       │ <───────────────│                                                                │                      │           
+       │                 │                                                                │                      │           
+       │                 │         POST /transactions.xml Metrics: {"Hit.200": 1}         │                      │           
+       │                 │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>                      │           
+       │                 │                                                                │                      │           
+       │                 │                             200 OK                             │                      │           
+       │                 │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                       │           
+       │                 │                                                                │                      │           
+       │                 │                                                                │                      │           
+       │                 │                    ╔══════════════════════════════╗            │                      │           
+═══════╪═════════════════╪════════════════════╣ Second request (Auth cached) ╠════════════╪══════════════════════╪═══════════
+       │                 │                    ╚══════════════════════════════╝            │                      │           
+       │                 │                                                                │                      │           
+       │    Get /foo     │                                                                │                      │           
+       │ ───────────────>│                                                                │                      │           
+       │                 │                                                                │                      │           
+       │                 │                                       Get /foo                 │                      │           
+       │                 │──────────────────────────────────────────────────────────────────────────────────────>│           
+       │                 │                                                                │                      │           
+       │                 │                                        200 OK                  │                      │           
+       │                 │<──────────────────────────────────────────────────────────────────────────────────────│           
+       │                 │                                                                │                      │           
+       │     200 OK      │                                                                │                      │           
+       │ <───────────────│                                                                │                      │           
+       │                 │                                                                │                      │           
+       │                 │POST  /transactions/authrep.xml Metrics: {"Hit":1, "Hit.200": 1}│                      │           
+       │                 │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>                      │           
+       │                 │                                                                │                      │           
+       │                 │                             200 OK                             │                      │           
+       │                 │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                       │           
+     ┌─┴──┐          ┌───┴───┐                                                       ┌────┴─────┐          ┌─────┴─────┐     
+     │User│          │APICast│                                                       │APIsonator│          │UpstreamAPI│     
+     └────┘          └───────┘                                                       └──────────┘          └───────────┘     
+```
+
 
 ## Configuration examples
 
@@ -71,3 +133,31 @@ Upstream API return a 200 status:
 ```
 
 
+
+## Dev notes:
+
+
+Flow source code:
+
+```
+@startuml
+== First request (Auth not cached) ==
+User -> APICast: Get /foo
+APICast --> APIsonator: POST  /transactions/authrep.xml
+APIsonator --> APICast: 200 OK
+APICast -> UpstreamAPI: Get /foo
+UpstreamAPI -> APICast: 200 OK
+APICast ->User: 200 OK
+APICast --> APIsonator: POST /transactions.xml
+APIsonator --> APICast: 200 OK
+
+== Second request (Auth cached) ==
+User -> APICast: Get /foo
+APICast -> UpstreamAPI: Get /foo
+UpstreamAPI -> APICast: 200 OK
+APICast ->User: 200 OK
+APICast --> APIsonator: POST  /transactions/authrep.xml
+APIsonator --> APICast: 200 OK
+
+@enduml
+```
