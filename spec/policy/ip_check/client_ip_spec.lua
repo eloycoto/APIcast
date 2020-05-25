@@ -70,6 +70,51 @@ describe('ClientIP', function()
           assert.is_nil(ip)
         end)
       end)
+
+      describe('and the host contains port', function()
+
+        it("returns valid IPv4 address", function()
+          stub(ngx.req, 'get_headers', function()
+            return { ["X-Forwarded-For"] = '1.2.3.4:1000' }
+          end)
+
+          local ip = client_ip.get_from({ 'X-Forwarded-For' })
+
+          assert.equals('1.2.3.4', ip)
+        end)
+
+        it("with invalid port", function()
+          stub(ngx.req, 'get_headers', function()
+            return { ["X-Forwarded-For"] = '1.2.3.4:foo' }
+          end)
+
+          local ip = client_ip.get_from({ 'X-Forwarded-For' })
+
+          assert.equals('1.2.3.4', ip)
+        end)
+
+        it("with port out of range", function()
+          stub(ngx.req, 'get_headers', function()
+            return { ["X-Forwarded-For"] = '1.2.3.4:99999' }
+          end)
+
+          local ip = client_ip.get_from({ 'X-Forwarded-For' })
+
+          assert.equals('1.2.3.4', ip)
+        end)
+
+        it("returns valid IPv6 address", function()
+
+          stub(ngx.req, 'get_headers', function()
+            return { ["X-Forwarded-For"] = '[2001:4860:4860::8888]:8080' }
+          end)
+
+          local ip = client_ip.get_from({ 'X-Forwarded-For' })
+
+          assert.equals('[2001:4860:4860::8888]', ip)
+        end)
+
+      end)
     end)
 
     describe('when no source is given', function()

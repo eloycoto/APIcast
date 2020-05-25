@@ -12,13 +12,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed issues with liquid replaces [THREESCALE-4937](https://issues.jboss.org/browse/THREESCALE-4937) [PR #1185](https://github.com/3scale/APIcast/pull/1185)
 - Fixed issues with HTTPS_PROXY and large bodies [THREESCALE-3863](https://issues.jboss.org/browse/THREESCALE-3863) [PR #1191](https://github.com/3scale/APIcast/pull/1191)
 - Fixed issues with path routing and query args [THREESCALE-5149](https://issues.redhat.com/browse/THREESCALE-5149) [PR #1190](https://github.com/3scale/APIcast/pull/1190)
+- Fixed issue with IPCheck policy when forwarder-for value contains port [THREESCALE-5258](https://issues.redhat.com/browse/THREESCALE-5258) [PR #1192](https://github.com/3scale/APIcast/pull/1192)
+
 
 ### Added
 
 - Added upstream Mutual TLS policy [THREESCALE-672](https://issues.jboss.org/browse/THREESCALE-672) [PR #1182](https://github.com/3scale/APIcast/pull/1182)
 - Added Rate-limit headers policy [THREESCALE-3795](https://issues.jboss.org/browse/THREESCALE-3795) [PR #1166](https://github.com/3scale/APIcast/pull/1166)
 - Added Content-caching policy [THREESCALE-2894](https://issues.jboss.org/browse/THREESCALE-2894) [PR #1182](https://github.com/3scale/APIcast/pull/1182)
-
 - Added Nginx request_id variable to context [PR #1184](https://github.com/3scale/APIcast/pull/1184)
 - Added HTTP verb on url_rewriten [PR #1187](https://github.com/3scale/APIcast/pull/1187)  [THREESCALE-5259](https://issues.jboss.org/browse/THREESCALE-5259)
 
