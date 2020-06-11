@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - New content_caching Prometheus metric [THREESCALE-5439](https://issues.jboss.org/browse/THREESCALE-5439) [PR #1203](https://github.com/3scale/APIcast/pull/1203)
 
 - Added Camel policy [PR #1193](https://github.com/3scale/APIcast/pull/1193) [THREESCALE-4867](https://issues.jboss.org/browse/THREESCALE-4867)
+- Support Proxy Protocol [PR #1195](https://github.com/3scale/APIcast/pull/1195) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
 
 ## [3.8.0] - 2020-03-24
 
