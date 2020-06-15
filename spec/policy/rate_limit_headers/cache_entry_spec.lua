@@ -26,5 +26,35 @@ describe("Cache key", function()
     assert.same(key.remaining:__tostring(), "-1")
   end)
 
+  describe("Import/export methods",  function()
+
+    it("Works as expected", function()
+
+      local entry = cache_entry.new(usage, 1, 10, 3)
+      assert.same(entry:export(), "1#10#3")
+
+      local data = cache_entry.import(usage, entry:export())
+      assert.same(data.limit:__tostring(), "1")
+      assert.same(data.remaining:__tostring(), "10")
+    end)
+
+
+    it("invalid usage returns nil", function()
+      assert.falsy(cache_entry.import())
+    end)
+
+    it("invalid import raw data", function()
+      local data = cache_entry.import(usage, "1#asd#123")
+      assert.same(data.limit:__tostring(), "1")
+      assert.same(data.remaining:__tostring(), "0")
+    end)
+
+    it("no raw_data return empty data", function()
+      local data = cache_entry.import(usage, "")
+      assert.same(data.limit:__tostring(), "0")
+      assert.same(data.remaining:__tostring(), "0")
+    end)
+
+  end)
 
 end)
