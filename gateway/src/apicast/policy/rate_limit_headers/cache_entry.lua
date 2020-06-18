@@ -7,6 +7,8 @@ local stringx = require 'pl.stringx'
 local _M = {}
 local mt = { __index = _M }
 
+local export_separator = "#"
+
 function _M.new(usage, max, remaining, reset)
   local self = setmetatable({}, mt)
 
@@ -43,9 +45,9 @@ function _M:reset(max, remaining, reset)
 end
 
 function _M:export()
-  return string.format("%s#%s#%s",
-    self.limit:__tostring(),
-    self.remaining:__tostring(),
+  return string.format("%s%s%s%s%s",
+    self.limit:__tostring(), export_separator,
+    self.remaining:__tostring(), export_separator,
     self.reset:remaining_secs_positive(now()))
 end
 
@@ -58,7 +60,7 @@ function _M.import(usage, exported_data)
     return _M.Init_empty(usage)
   end
 
-  local data = stringx.split(exported_data, "#")
+  local data = stringx.split(exported_data, export_separator)
   return _M.new(usage, data[1] or 0, data[2] or 0, data[3] or 0)
 end
 
