@@ -424,3 +424,70 @@ qr/upstream_status\{status="200",service_id="21",service_system_name="bar"\} 1/
 ]]
 --- no_error_log
 [error]
+
+
+=== TEST 8: APICast status metric
+This metric report APICast status, because service cannot be found, auth is
+invalid, the response cache from upstream is cached, or upstream is not
+available, so upstream_status is not a valid metric at all, to monitor APICast
+response codes.
+--- configuration
+{
+  "services": [
+    {
+      "id": 42,
+      "backend_version":  1,
+      "backend_authentication_type": "service_token",
+      "backend_authentication_value": "token-value",
+      "proxy": {
+        "hosts": ["one"],
+        "api_backend": "http://test:$TEST_NGINX_SERVER_PORT/",
+        "proxy_rules": [
+          { "pattern": "/", "http_method": "GET", "metric_system_name": "hits", "delta": 1 }
+        ],
+        "policy_chain": [
+          {
+            "name": "apicast.policy.apicast"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+--- backend
+  location /transactions/authrep.xml {
+    content_by_lua_block {
+
+      local key = ngx.req.get_uri_args(0)["user_key"]
+      if key == "value" then
+        ngx.exit(200)
+      else
+        ngx.exit(403)
+      end
+    }
+  }
+--- upstream
+  location / {
+     content_by_lua_block {
+       ngx.say('yay, api backend');
+     }
+  }
+--- request eval
+["GET /?user_key=value", "GET /?user_key=invalid", "GET /?user_key=value", "GET /metrics/"]
+--- more_headers eval
+["Host: one", "Host: one", "Host: two", "Host: metrics"]
+--- error_code eval
+[200, 403, 404, 200]
+--- expected_response_body_like_multiple eval
+[
+"",
+"",
+"",
+[
+qr/apicast_status\{status="200"\} 1/,
+qr/apicast_status\{status="403"\} 1/,
+qr/apicast_status\{status="404"\} 1/,
+]]
+--- no_error_log
+[error]
