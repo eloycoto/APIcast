@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added HTTP verb on url_rewriten [PR #1187](https://github.com/3scale/APIcast/pull/1187)  [THREESCALE-5259](https://issues.jboss.org/browse/THREESCALE-5259) [PR #1202](https://github.com/3scale/APIcast/pull/1202)
 - Added custom_metrics policy [PR #1188](https://github.com/3scale/APIcast/pull/1188) [THREESCALE-5098](https://issues.jboss.org/browse/THREESCALE-5098)
 - New apicast_status Prometheus metric [THREESCALE-5417](https://issues.jboss.org/browse/THREESCALE-5417) [PR #1200](https://github.com/3scale/APIcast/pull/1200)
+- New content_caching Prometheus metric [THREESCALE-5439](https://issues.jboss.org/browse/THREESCALE-5439) [PR #1203](https://github.com/3scale/APIcast/pull/1203)
 
 
 ## [3.8.0] - 2020-03-24
