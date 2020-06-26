@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [Unreleased]
+## [3.9.0-alpha1] 2020-06-26
 
 ### Fixed
 
@@ -816,3 +816,5 @@ expressed might change in future releases.
 [3.8.0-alpha1]: https://github.com/3scale/apicast/compare/v3.7.0...v3.8.0-alpha1
 [3.8.0-alpha2]: https://github.com/3scale/apicast/compare/v3.8.0-alpha1...v3.8.0-alpha2
 [3.8.0-cr1]: https://github.com/3scale/apicast/compare/v3.8.0-alpha2...v3.8.0-cr1
+[3.8.0]: https://github.com/3scale/apicast/compare/v3.8.0-cr1...v3.8.0
+[3.9.0-alpha1]: https://github.com/3scale/apicast/compare/v3.8.0...v3.9.0-alpha1
