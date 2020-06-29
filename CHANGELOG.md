@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed issues with HTTPS_PROXY and large bodies [THREESCALE-3863](https://issues.jboss.org/browse/THREESCALE-3863) [PR #1191](https://github.com/3scale/APIcast/pull/1191)
 - Fixed issues with path routing and query args [THREESCALE-5149](https://issues.redhat.com/browse/THREESCALE-5149) [PR #1190](https://github.com/3scale/APIcast/pull/1190)
 - Fixed issue with IPCheck policy when forwarder-for value contains port [THREESCALE-5258](https://issues.redhat.com/browse/THREESCALE-5258) [PR #1192](https://github.com/3scale/APIcast/pull/1192)
+- Fixed issues with URL encode on routing policy [THREESCALE-5454](https://issues.redhat.com/browse/THREESCALE-5454) [PR #1208](https://github.com/3scale/APIcast/pull/1208)
 
 
 ### Added
