@@ -346,3 +346,60 @@ location / {
 [200, 200]
 --- no_error_log
 [error]
+
+=== TEST 7: No rate-limit information if no limits by app
+--- configuration
+{
+  "services": [
+    {
+      "id": 42,
+      "backend_version":  1,
+      "backend_authentication_type": "service_token",
+      "backend_authentication_value": "token-value",
+      "proxy": {
+        "hosts": [
+          "localhost"
+        ],
+        "api_backend": "http://test:$TEST_NGINX_SERVER_PORT/",
+        "proxy_rules": [
+          { "pattern": "/", "http_method": "GET", "metric_system_name": "hits", "delta": 1 }
+        ],
+        "policy_chain": [
+          {
+            "name": "apicast.policy.rate_limit_headers"
+          },
+          {
+            "name": "apicast",
+            "version": "builtin",
+            "configuration": {}
+          }
+        ]
+      }
+    }
+  ]
+}
+--- backend
+location /transactions/authrep.xml {
+  content_by_lua_block {
+    ngx.exit(200)
+  }
+}
+--- upstream env
+location / {
+  access_by_lua_block {
+      ngx.say("OK")
+  }
+}
+--- request
+GET /?user_key=123
+--- response_headers
+RateLimit-Limit:
+RateLimit-Remaining:
+RateLimit-Reset: 
+--- response_body env
+OK
+--- error_code: 200
+--- no_error_log
+[error]
+
+

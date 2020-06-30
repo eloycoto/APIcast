@@ -2,6 +2,7 @@ local policy = require('apicast.policy')
 local _M = policy.new('Rate Limit Headers', 'builtin')
 
 local usage_cache = require "cache"
+local math_max = math.max
 
 local new = _M.new
 local get_phase = ngx.get_phase
@@ -55,9 +56,18 @@ local function decrement(self, usage)
     return self.cache:decrement_usage_metric(usage)
 end
 
+-- return 0 if the number is negative
+local function positive_number(number)
+  return math_max(tonumber(number), 0)
+end
+
 local function add_headers(info)
-    ngx.header[limit_header] = info.limit
-    ngx.header[remaining_header] = info.remaining
+    if info.reset <= 0 then
+      -- filter is not defined at all, so skip it
+      return nil
+    end
+    ngx.header[limit_header] = positive_number(info.limit)
+    ngx.header[remaining_header] = positive_number(info.remaining)
     ngx.header[reset_header] = info.reset
 end
 

@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Added upstream Mutual TLS policy [THREESCALE-672](https://issues.jboss.org/browse/THREESCALE-672) [PR #1182](https://github.com/3scale/APIcast/pull/1182)
-- Added Rate-limit headers policy [THREESCALE-3795](https://issues.jboss.org/browse/THREESCALE-3795) [PR #1166](https://github.com/3scale/APIcast/pull/1166) [PR #1197](https://github.com/3scale/APIcast/pull/1197)
+- Added Rate-limit headers policy [THREESCALE-3795](https://issues.jboss.org/browse/THREESCALE-3795) [PR #1166](https://github.com/3scale/APIcast/pull/1166) [PR #1197](https://github.com/3scale/APIcast/pull/1197) [PR #1209](https://github.com/3scale/APIcast/pull/1209)
 - Added Content-caching policy [THREESCALE-2894](https://issues.jboss.org/browse/THREESCALE-2894) [PR #1182](https://github.com/3scale/APIcast/pull/1182)
 - Added Nginx request_id variable to context [PR #1184](https://github.com/3scale/APIcast/pull/1184)
 - Added HTTP verb on url_rewriten [PR #1187](https://github.com/3scale/APIcast/pull/1187)  [THREESCALE-5259](https://issues.jboss.org/browse/THREESCALE-5259) [PR #1202](https://github.com/3scale/APIcast/pull/1202)
