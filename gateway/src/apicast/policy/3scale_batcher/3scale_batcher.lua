@@ -180,7 +180,17 @@ end
 -- calls to backend.
 function _M:access(context)
   local backend = backend_client:new(context.service, http_ng_resty)
-  local usage = context.usage
+  local usage = context.usage or {}
+  local service = context.service
+  local service_id = service.id
+  local credentials = context.credentials
+
+ -- Checking that at least one mapping rule match, if not raise no mapping rule
+ -- match error
+  local encoded_usage = usage:encoded_format()
+  if encoded_usage == '' then
+    return errors.no_match(service)
+  end
 
   -- If routing policy changes the upstream and it only belongs to a specified
   -- owner, we need to filter out the usage for APIs that are not used at all.
@@ -188,9 +198,6 @@ function _M:access(context)
     context:route_upstream_usage_cleanup(usage, ngx.ctx.matched_rules)
   end
 
-  local service = context.service
-  local service_id = service.id
-  local credentials = context.credentials
   local transaction = Transaction.new(service_id, credentials, usage)
 
   ensure_timer_task_created(self, service_id, backend)
