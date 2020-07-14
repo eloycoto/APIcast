@@ -6,7 +6,7 @@ use Test::APIcast::Blackbox 'no_plan';
 # backend client and API will fail, this is why a new server is added on
 # --backend test section
 #
-# Also, this is the reason why ip check policy is tested here.
+# Additionally, this is the reason why the IP Check policy is tested here.
 
 
 require("policies.pl");
