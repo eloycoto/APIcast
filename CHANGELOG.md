@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed issues with URL encode on routing policy [THREESCALE-5454](https://issues.redhat.com/browse/THREESCALE-5454) [PR #1208](https://github.com/3scale/APIcast/pull/1208)
 
 - Fixed issue with mapping rules and 3scale batcher policy [THREESCALE-5513](https://issues.redhat.com/browse/THREESCALE-5513) [PR #1210](https://github.com/3scale/APIcast/pull/1210)
+- Fixed issues with invalid number of conditions [THREESCALE-5435](https://issues.redhat.com/browse/THREESCALE-5435) [PR #1212](https://github.com/3scale/APIcast/pull/1212)
+
 
 ### Added
 

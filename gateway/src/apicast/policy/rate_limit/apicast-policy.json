@@ -113,7 +113,7 @@
             "items": {
               "$ref": "#/definitions/operation"
             },
-            "minItems": 1
+            "minItems": 0
           },
           "combine_op": {
             "type": "string",
