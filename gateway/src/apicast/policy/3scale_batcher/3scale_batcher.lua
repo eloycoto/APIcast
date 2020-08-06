@@ -120,6 +120,9 @@ local function error(service, rejection_reason)
 end
 
 local function update_downtime_cache(cache, transaction, backend_status, cache_handler)
+  if not cache_handler then
+    return
+  end
   local key = keys_helper.key_for_cached_auth(transaction)
   cache_handler(cache, key, { status = backend_status })
 end
@@ -206,6 +209,7 @@ function _M:access(context)
   local auth_is_cached = (cached_auth and true) or false
   metrics.update_cache_counters(auth_is_cached)
 
+
   if cached_auth then
     handle_cached_auth(self, cached_auth, service, transaction)
   else
@@ -214,6 +218,9 @@ function _M:access(context)
     context:publish_backend_auth(backend_res)
     local backend_status = backend_res.status
     local cache_handler = context.cache_handler -- Set by Caching policy
+    -- this is needed, because in allow mode, the status maybe is always 200, so
+    -- Request need to go to the Upstream API
+    update_downtime_cache(self.backend_downtime_cache, transaction, backend_status, cache_handler)
 
     if backend_status == 200 then
       handle_backend_ok(self, transaction, cache_handler)

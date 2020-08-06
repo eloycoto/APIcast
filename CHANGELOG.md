@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
 
 
+### Fixed
+
+- Fixed issues with allow caching mode  and 3scale batcher [PR #1216](https://github.com/3scale/APIcast/pull/1216) [THREESCALE-5753](https://issues.redhat.com/browse/THREESCALE-5753)
+
 ## [3.9.0] 2020-08-17
 
 No issues found on beta1,so becames final release.
