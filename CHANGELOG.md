@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased]
+- Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
+
+
+## [3.9.0] 2020-08-17
+
+No issues found on beta1,so becames final release.
+
+## [3.9.0-beta1] 2020-07-17
+
+### Fixed
+
+- Fixed issues with URL encode on routing policy [THREESCALE-5454](https://issues.redhat.com/browse/THREESCALE-5454) [PR #1208](https://github.com/3scale/APIcast/pull/1208)
+- Fixed issue with mapping rules and 3scale batcher policy [THREESCALE-5513](https://issues.redhat.com/browse/THREESCALE-5513) [PR #1210](https://github.com/3scale/APIcast/pull/1210)
+- Fixed issues with invalid number of conditions [THREESCALE-5435](https://issues.redhat.com/browse/THREESCALE-5435) [PR #1212](https://github.com/3scale/APIcast/pull/1212)
+
+## [3.9.0-alpha1] 2020-06-26
 
 ### Fixed
 
@@ -13,10 +29,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed issues with HTTPS_PROXY and large bodies [THREESCALE-3863](https://issues.jboss.org/browse/THREESCALE-3863) [PR #1191](https://github.com/3scale/APIcast/pull/1191)
 - Fixed issues with path routing and query args [THREESCALE-5149](https://issues.redhat.com/browse/THREESCALE-5149) [PR #1190](https://github.com/3scale/APIcast/pull/1190)
 - Fixed issue with IPCheck policy when forwarder-for value contains port [THREESCALE-5258](https://issues.redhat.com/browse/THREESCALE-5258) [PR #1192](https://github.com/3scale/APIcast/pull/1192)
-- Fixed issues with URL encode on routing policy [THREESCALE-5454](https://issues.redhat.com/browse/THREESCALE-5454) [PR #1208](https://github.com/3scale/APIcast/pull/1208)
-
-- Fixed issue with mapping rules and 3scale batcher policy [THREESCALE-5513](https://issues.redhat.com/browse/THREESCALE-5513) [PR #1210](https://github.com/3scale/APIcast/pull/1210)
-- Fixed issues with invalid number of conditions [THREESCALE-5435](https://issues.redhat.com/browse/THREESCALE-5435) [PR #1212](https://github.com/3scale/APIcast/pull/1212)
 
 
 ### Added
@@ -29,9 +41,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added custom_metrics policy [PR #1188](https://github.com/3scale/APIcast/pull/1188) [THREESCALE-5098](https://issues.jboss.org/browse/THREESCALE-5098)
 - New apicast_status Prometheus metric [THREESCALE-5417](https://issues.jboss.org/browse/THREESCALE-5417) [PR #1200](https://github.com/3scale/APIcast/pull/1200)
 - New content_caching Prometheus metric [THREESCALE-5439](https://issues.jboss.org/browse/THREESCALE-5439) [PR #1203](https://github.com/3scale/APIcast/pull/1203)
-
 - Added Camel policy [PR #1193](https://github.com/3scale/APIcast/pull/1193) [THREESCALE-4867](https://issues.jboss.org/browse/THREESCALE-4867)
-- Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
+
 
 ## [3.8.0] - 2020-03-24
 
@@ -821,3 +832,6 @@ expressed might change in future releases.
 [3.8.0-alpha1]: https://github.com/3scale/apicast/compare/v3.7.0...v3.8.0-alpha1
 [3.8.0-alpha2]: https://github.com/3scale/apicast/compare/v3.8.0-alpha1...v3.8.0-alpha2
 [3.8.0-cr1]: https://github.com/3scale/apicast/compare/v3.8.0-alpha2...v3.8.0-cr1
+[3.9.0-alpha1]: https://github.com/3scale/apicast/compare/v3.8.0...v3.9.0-alpha1
+[3.9.0-beta1]: https://github.com/3scale/apicast/compare/v3.9.0-alpha1..v3.9.0-beta1
+[3.9.0]: https://github.com/3scale/apicast/compare/v3.9.0-beta1..v3.9.0
