@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.9.0] 2020-08-17
+
+No issues found on beta1,so becames final release.
+
 ## [3.9.0-beta1] 2020-07-17
 
 ### Fixed
@@ -826,3 +830,4 @@ expressed might change in future releases.
 [3.8.0]: https://github.com/3scale/apicast/compare/v3.8.0-cr1...v3.8.0
 [3.9.0-alpha1]: https://github.com/3scale/apicast/compare/v3.8.0...v3.9.0-alpha1
 [3.9.0-beta1]: https://github.com/3scale/apicast/compare/v3.9.0-alpha1..v3.9.0-beta1
+[3.9.0]: https://github.com/3scale/apicast/compare/v3.9.0-beta1..v3.9.0
