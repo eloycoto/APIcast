@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [Unreleased]
+
+### Added
 - Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
 - Enable support to log credentials on logging policy [PR #1217](https://github.com/3scale/APIcast/pull/1217) [THREESCALE-5273](https://issues.redhat.com/browse/THREESCALE-5273)
+- Add a way to support more than 1000 services in a single instance  [PR #1222](https://github.com/3scale/APIcast/pull/1222) [THREESCALE-5308](https://issues.redhat.com/browse/THREESCALE-5308)
+
 
 ### Fixed
 

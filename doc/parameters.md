@@ -28,6 +28,15 @@ Specifies the period (in seconds) that the configuration will be stored in the c
 
 This parameter is also used to store OpenID discovery configuration in the local cache, as the same behavior as described above.
 
+### `APICAST_SERVICE_CACHE_SIZE`
+
+**Values:** _a number_
+**Default:** 1000
+
+Specifies the number of services that APICast can store in the internal cache. A
+big number has some kind of performance inpact because Lua lru cache will
+initialize all the entries.
+
 ### `APICAST_CONFIGURATION_LOADER`
 
 **Values:** boot | lazy  
