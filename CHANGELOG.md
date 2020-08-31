@@ -5,10 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [Unreleased]
+## [3.9.1-alpha1] 2020-08-31
 
 ### Added
-- Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
 - Enable support to log credentials on logging policy [PR #1217](https://github.com/3scale/APIcast/pull/1217) [THREESCALE-5273](https://issues.redhat.com/browse/THREESCALE-5273)
 - Add a way to support more than 1000 services in a single instance  [PR #1222](https://github.com/3scale/APIcast/pull/1222) [THREESCALE-5308](https://issues.redhat.com/browse/THREESCALE-5308)
 - Added new original_request_uri tag on Opentracing [PR #1223](https://github.com/3scale/APIcast/pull/1223) [THREESCALE-5669](https://issues.redhat.com/browse/THREESCALE-5669)
@@ -845,3 +844,4 @@ expressed might change in future releases.
 [3.9.0-alpha1]: https://github.com/3scale/apicast/compare/v3.8.0...v3.9.0-alpha1
 [3.9.0-beta1]: https://github.com/3scale/apicast/compare/v3.9.0-alpha1..v3.9.0-beta1
 [3.9.0]: https://github.com/3scale/apicast/compare/v3.9.0-beta1..v3.9.0
+[3.9.1-alpha1]: https://github.com/3scale/apicast/compare/v3.9.0..v3.9.0-alpha1
