@@ -34,7 +34,7 @@ This parameter is also used to store OpenID discovery configuration in the local
 **Default:** 1000
 
 Specifies the number of services that APICast can store in the internal cache. A
-big number has some kind of performance inpact because Lua lru cache will
+big number has a performance impact because Lua lru cache will
 initialize all the entries.
 
 ### `APICAST_CONFIGURATION_LOADER`
