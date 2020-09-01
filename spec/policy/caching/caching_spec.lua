@@ -138,6 +138,15 @@ describe('Caching policy', function()
         cache_handler(cache, 'a_key', { status = 200 }, nil)
         assert.is_nil(cache:get('a_key'))
       end)
+
+      it("clears the cache if it's present", function()
+          -- THREESCALE-4464
+          cache:set('a_key', 200)
+
+          cache_handler(cache, 'a_key', { status = 200 }, nil)
+          assert.is_nil(cache:get('a_key'))
+      end)
+
     end)
   end)
 end)
