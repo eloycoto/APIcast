@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add a way to support more than 1000 services in a single instance  [PR #1222](https://github.com/3scale/APIcast/pull/1222) [THREESCALE-5308](https://issues.redhat.com/browse/THREESCALE-5308)
 - Added new original_request_uri tag on Opentracing [PR #1223](https://github.com/3scale/APIcast/pull/1223) [THREESCALE-5669](https://issues.redhat.com/browse/THREESCALE-5669)
 - Added a new metric when the `worker_process` starts [PR #1228](https://github.com/3scale/APIcast/pull/1228) [THREESCALE-5965](https://issues.redhat.com/browse/THREESCALE-5965)
+- Caching policy disable default field [PR #1226](https://github.com/3scale/APIcast/pull/1226) [THREESCALE-1514](https://issues.redhat.com/browse/THREESCALE-1514)
 
 ### Fixed
 
