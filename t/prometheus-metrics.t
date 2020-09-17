@@ -54,6 +54,9 @@ openresty_shdict_free_space{dict="limiter"} 1032192
 openresty_shdict_free_space{dict="locks"} 1032192
 openresty_shdict_free_space{dict="prometheus_metrics"} 16662528
 openresty_shdict_free_space{dict="rate_limit_headers"} 20840448
+# HELP worker_process Number of times that a nginx worker has been started
+# TYPE worker_process counter
+worker_process{} 1
 --- error_code: 200
 --- no_error_log
 [error]

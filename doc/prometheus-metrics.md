@@ -11,6 +11,7 @@
 | total_response_time_seconds        | Time needed to sent a response to the client (in seconds)        | histogram | service_id, service_system_name                                   | Default         |
 | upstream_response_time_seconds     | Response times from upstream servers (in seconds)                | histogram | service_id, service_system_name                                   | Default         |
 | upstream_status                    | HTTP status from upstream servers                                | counter   | status, service_id, service_system_name                           | Default         |
+| worker_process                     | Number of times that a worker process has been started.          | counter   | -                                                                 | Default         |
 | threescale_backend_calls           | Authorize and report requests to the 3scale backend (Apisonator) | counter   | endpoint(authrep, auth, report), status(2xx, 4xx, 5xx)            | APIcast         |
 | batching_policy_auths_cache_hits   | Hits in the auths cache of the 3scale batching policy            | counter   | -                                                                 | 3scale Batcher  |
 | batching_policy_auths_cache_misses | Misses in the auths cache of the 3scale batching policy          | counter   | -                                                                 | 3scale Batcher  |
