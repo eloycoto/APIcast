@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Fixed issues with allow caching mode  and 3scale batcher [PR #1216](https://github.com/3scale/APIcast/pull/1216) [THREESCALE-5753](https://issues.redhat.com/browse/THREESCALE-5753)
 - Fixed issues when Auth Caching is disabled [PR #1225](https://github.com/3scale/APIcast/pull/1225) [THREESCALE-4464](https://issues.redhat.com/browse/THREESCALE-4464)
+- Fixed issues with service filter and OIDC [PR #1229](https://github.com/3scale/APIcast/pull/1229) [THREESCALE-6042](https://issues.redhat.com/browse/THREESCALE-6042)
 
 
 ## [3.9.0] 2020-08-17
