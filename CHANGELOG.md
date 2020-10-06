@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 with many services might have experienced issues with this policy because the
 size of those dictionaries was not enough to store everything the policy needs
 to function correctly. [PR #1231](https://github.com/3scale/APIcast/pull/1231)
+- Fixed issue with Camel service over HTTPs when Routing Policy [PR #1230](https://github.com/3scale/APIcast/pull/1230) [THREESCALE-5891](https://issues.redhat.com/browse/THREESCALE-5891)
+
+
 
 ## [3.9.0] 2020-08-17
 

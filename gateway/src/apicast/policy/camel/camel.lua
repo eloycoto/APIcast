@@ -35,6 +35,8 @@ local function find_proxy(self, scheme)
 end
 
 function _M:access(context)
+  context.skip_https_connect_on_proxy = true
+
   local upstream = context.get_upstream()
   if not upstream then
     return

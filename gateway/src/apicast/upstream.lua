@@ -214,6 +214,10 @@ function _M:call(context)
         ngx.log(ngx.DEBUG, 'using proxy: ', proxy_uri)
         -- https requests will be terminated, http will be rewritten and sent
         -- to a proxy
+        if context.skip_https_connect_on_proxy then
+          self:set_skip_https_connect_on_proxy();
+        end
+
         http_proxy.request(self, proxy_uri)
     else
         local err = self:rewrite_request()
