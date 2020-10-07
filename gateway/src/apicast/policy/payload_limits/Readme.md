@@ -1,4 +1,4 @@
-# Request/response size limits policy
+# Request/response payload size limits policy
 
 This policy allows users to limit the size of the request and the response.
 

@@ -40,7 +40,7 @@ __DATA__
         ],
         "policy_chain": [
           {
-            "name": "apicast.policy.limits",
+            "name": "apicast.policy.payload_limits",
             "configuration": {
               "request": 0,
               "response": 0
@@ -94,7 +94,7 @@ yay, api backend
         ],
         "policy_chain": [
           {
-            "name": "apicast.policy.limits",
+            "name": "apicast.policy.payload_limits",
             "configuration": {
               "request": 100,
               "response": 0
@@ -128,7 +128,6 @@ Payload Too Large
 
 
 === TEST 3: Request body size smaller than the limit
--- ONLY
 --- backend
   location /transactions/authrep.xml {
     content_by_lua_block {
@@ -150,7 +149,7 @@ Payload Too Large
         ],
         "policy_chain": [
           {
-            "name": "apicast.policy.limits",
+            "name": "apicast.policy.payload_limits",
             "configuration": {
               "request": 10000000,
               "response": 0
@@ -205,7 +204,7 @@ yay, api backend
         ],
         "policy_chain": [
           {
-            "name": "apicast.policy.limits",
+            "name": "apicast.policy.payload_limits",
             "configuration": {
               "request": 0,
               "response": 100
@@ -265,7 +264,7 @@ POST /test
         ],
         "policy_chain": [
           {
-            "name": "apicast.policy.limits",
+            "name": "apicast.policy.payload_limits",
             "configuration": {
               "request": 0,
               "response": 1000000
@@ -295,7 +294,7 @@ POST /test
   }
 
 --- request eval
-"POST /test \n" 
+"POST /test \n"
 --- error_code: 200
 --- no_error_log
 [error]

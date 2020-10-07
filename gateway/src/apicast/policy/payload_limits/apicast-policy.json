@@ -16,6 +16,7 @@
         "request": {
             "type": "integer",
             "title": "The request limit in bytes",
+            "description": "Request limit in bytes, 0 allows all",
             "default": 0,
             "minimum": 0,
             "examples": [
@@ -25,6 +26,7 @@
         "response": {
             "type": "integer",
             "title": "The response limit in bytes",
+            "description": "Response limit in bytes, 0 allows all",
             "default": 0,
             "minimum": 0,
             "examples": [

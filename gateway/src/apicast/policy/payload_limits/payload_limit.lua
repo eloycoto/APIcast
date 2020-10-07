@@ -1,7 +1,6 @@
-local _M  = require('apicast.policy').new('Logging Policy', 'builtin')
+local _M  = require('apicast.policy').new('Payload size policy', 'builtin')
 local new = _M.new
 
-local ngx_print = ngx.print
 local ngx_exit = ngx.exit
 local ngx_say = ngx.say
 
