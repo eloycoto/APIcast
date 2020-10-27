@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add response/request content size limits [PR #1227](https://github.com/3scale/APIcast/pull/1227) [THREESCALE-5244](https://issues.redhat.com/browse/THREESCALE-5244)
 
 
+
 ### Fixed
 
 - Fixed issues with allow caching mode  and 3scale batcher [PR #1216](https://github.com/3scale/APIcast/pull/1216) [THREESCALE-5753](https://issues.redhat.com/browse/THREESCALE-5753)
@@ -28,6 +29,7 @@ size of those dictionaries was not enough to store everything the policy needs
 to function correctly. [PR #1231](https://github.com/3scale/APIcast/pull/1231)
 - Fixed issue with Camel service over HTTPs when Routing Policy [PR #1230](https://github.com/3scale/APIcast/pull/1230) [THREESCALE-5891](https://issues.redhat.com/browse/THREESCALE-5891)
 - Fixed doc issue on SERVICES_FILTER parameter [PR #1233](https://github.com/3scale/APIcast/pull/1233) [THREESCALE-5421](https://issues.redhat.com/browse/THREESCALE-5421)
+- Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
 
 
 
