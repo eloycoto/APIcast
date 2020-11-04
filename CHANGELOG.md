@@ -4,8 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.10.0-alpha2]
 
-## [3.10-alpha1]
+### Fixed
+
+- Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
+- Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
+
+## [3.10.0-alpha1]
 
 ### Added
 - Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
@@ -14,7 +20,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added new original_request_uri tag on Opentracing [PR #1223](https://github.com/3scale/APIcast/pull/1223) [THREESCALE-5669](https://issues.redhat.com/browse/THREESCALE-5669)
 - Caching policy disable default field [PR #1226](https://github.com/3scale/APIcast/pull/1226) [THREESCALE-1514](https://issues.redhat.com/browse/THREESCALE-1514)
 - Add response/request content size limits [PR #1227](https://github.com/3scale/APIcast/pull/1227) [THREESCALE-5244](https://issues.redhat.com/browse/THREESCALE-5244)
-
 
 
 ### Fixed
@@ -29,9 +34,6 @@ to function correctly. [PR #1231](https://github.com/3scale/APIcast/pull/1231)
 - Fixed issue with Camel service over HTTPs when Routing Policy [PR #1230](https://github.com/3scale/APIcast/pull/1230) [THREESCALE-5891](https://issues.redhat.com/browse/THREESCALE-5891)
 - Fixed doc issue on SERVICES_FILTER parameter [PR #1233](https://github.com/3scale/APIcast/pull/1233) [THREESCALE-5421](https://issues.redhat.com/browse/THREESCALE-5421)
 - Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
-
-- Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
-- Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
 
 ## [3.9.1] 2020-10-13
 
@@ -866,3 +868,4 @@ expressed might change in future releases.
 [3.9.0]: https://github.com/3scale/apicast/compare/v3.9.0-beta1..v3.9.0
 [3.9.1]: https://github.com/3scale/apicast/compare/v3.9.0..v3.9.1
 [3.10.0-alpha1]: https://github.com/3scale/apicast/compare/v3.9.1..v3.10.0-alpha1
+[3.10.0-alpha2]: https://github.com/3scale/apicast/compare/v3.10.0-alpha1..v3.10.0-alpha2
