@@ -232,6 +232,21 @@ describe('Configuration object', function()
       })
     end)
 
+    it("Services without oidc_config data", function()
+      local oidc_config = {
+        false,
+        {service_id= 42, issuer="foo"},
+        {service_id= 21, issuer="bar"},
+
+      }
+      local res = filter_oidc_config(mockservices, oidc_config)
+      assert.same(res, {
+        {},
+        {service_id= 42, issuer="foo"},
+        {service_id= 21, issuer="bar"},
+      })
+    end)
+
   end)
 
   insulate('.services_limit', function()

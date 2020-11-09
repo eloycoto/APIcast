@@ -191,6 +191,8 @@ function _M.filter_oidc_config(services, oidc)
       if not oidc_config.service_id or services_ids[tostring(oidc_config.service_id)] then
         table.insert(oidc_final_config, oidc_config)
       end
+    else
+      table.insert(oidc_final_config, {})
     end
   end
   return oidc_final_config
