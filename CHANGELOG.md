@@ -4,14 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.10.0-alpha2]
+## [3.10.0-beta1] 2020-11-23
+
+- Fixed issues with OIDC validation [PR #1239](https://github.com/3scale/APIcast/pull/1239) [THREESCALE-6313](https://issues.redhat.com/browse/THREESCALE-6313)
+- Fixed issues with Liquid body size [PR #1240](https://github.com/3scale/APIcast/pull/1240) [THREESCALE-6315](https://issues.redhat.com/browse/THREESCALE-6315)
+
+## [3.10.0-alpha2] 2020-11-04
 
 ### Fixed
 
 - Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
 - Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
 
-## [3.10.0-alpha1]
+## [3.10.0-alpha1] 2020-10-13
 
 ### Added
 - Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
@@ -39,8 +44,6 @@ to function correctly. [PR #1231](https://github.com/3scale/APIcast/pull/1231)
 
 - Added a new metric when the `worker_process` starts [PR #1228](https://github.com/3scale/APIcast/pull/1228) [THREESCALE-5965](https://issues.redhat.com/browse/THREESCALE-5965)
 - Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
-- Fixed issues with OIDC validation [PR #1239](https://github.com/3scale/APIcast/pull/1239) [THREESCALE-6313](https://issues.redhat.com/browse/THREESCALE-6313)
-- Fixed issues with Liquid body size [PR #1240](https://github.com/3scale/APIcast/pull/1240) [THREESCALE-6315](https://issues.redhat.com/browse/THREESCALE-6315)
 
 
 
@@ -874,3 +877,4 @@ expressed might change in future releases.
 [3.9.1]: https://github.com/3scale/apicast/compare/v3.9.0..v3.9.1
 [3.10.0-alpha1]: https://github.com/3scale/apicast/compare/v3.9.1..v3.10.0-alpha1
 [3.10.0-alpha2]: https://github.com/3scale/apicast/compare/v3.10.0-alpha1..v3.10.0-alpha2
+[3.10.0-beta1]: https://github.com/3scale/apicast/compare/v3.10.0-alpha2..v3.10.0-beta1
