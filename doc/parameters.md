@@ -105,6 +105,15 @@ Specifies the log level for the OpenResty logs.
 Defines the file that will store the access logs.
 
 
+### APICAST_ACCESS_LOG_BUFFER
+
+**Values:** integer
+**Default**: nil
+
+Allows access log writes to be writes in chunks on bytes, so less system calls
+that improves the performance of the whole gateway.
+
+
 ### `APICAST_OIDC_LOG_LEVEL`
 
 **Values:** debug | info | notice | warn | error | crit | alert | emerg  

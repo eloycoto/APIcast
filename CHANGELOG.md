@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [Unreleased]
+
+### Fixed
+
+- Fixed issues with URI when using Routing Policy [PR #1245](https://github.com/3scale/APIcast/pull/1245) [THREESCALE-6410](https://issues.redhat.com/browse/THREESCALE-6410)
+
+### Added
+
+- Add Access-Control-Max-Age [PR #1247](https://github.com/3scale/APIcast/pull/1247) [THREESCALE-6556](https://issues.redhat.com/browse/THREESCALE-6556)
+- Add HTTP codes policy [PR #1236](https://github.com/3scale/APIcast/pull/1236) [THREESCALE-6255](https://issues.redhat.com/browse/THREESCALE-6255)
+- Buffer access log on chunks [PR #1248](https://github.com/3scale/APIcast/pull/1248) [THREESCALE-6563](https://issues.redhat.com/browse/THREESCALE-6563)
+
+## [3.10.0] 2021-01-04
+
+Beta1 is stable and moved to final release.
+
 ## [3.10.0-beta1] 2020-11-23
 
 - Fixed issues with OIDC validation [PR #1239](https://github.com/3scale/APIcast/pull/1239) [THREESCALE-6313](https://issues.redhat.com/browse/THREESCALE-6313)
@@ -25,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added new original_request_uri tag on Opentracing [PR #1223](https://github.com/3scale/APIcast/pull/1223) [THREESCALE-5669](https://issues.redhat.com/browse/THREESCALE-5669)
 - Caching policy disable default field [PR #1226](https://github.com/3scale/APIcast/pull/1226) [THREESCALE-1514](https://issues.redhat.com/browse/THREESCALE-1514)
 - Add response/request content size limits [PR #1227](https://github.com/3scale/APIcast/pull/1227) [THREESCALE-5244](https://issues.redhat.com/browse/THREESCALE-5244)
+
 
 
 ### Fixed
