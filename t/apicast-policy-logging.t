@@ -587,7 +587,7 @@ OK
 [error]
 
 === TEST 14: APICAST_ACCESS_LOG_BUFFER env parameter
-When buffer is enabled, log will be bump in chunks
+When buffer is enabled, log will be bumped in chunks
 --- env eval
 ('APICAST_ACCESS_LOG_BUFFER' => '1k')
 --- configuration
