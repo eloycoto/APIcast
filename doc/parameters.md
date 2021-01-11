@@ -110,8 +110,8 @@ Defines the file that will store the access logs.
 **Values:** integer
 **Default**: nil
 
-Allows access log writes to be writes in chunks on bytes, so less system calls
-that improves the performance of the whole gateway.
+Allows access log writes to be included in chunks of bytes, resulting on fewer system calls
+that improve the performance of the whole gateway.
 
 
 ### `APICAST_OIDC_LOG_LEVEL`
