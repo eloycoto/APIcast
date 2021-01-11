@@ -7,20 +7,40 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+### Added
+
+- Add HTTP codes policy [PR #1236](https://github.com/3scale/APIcast/pull/1236) [THREESCALE-6255](https://issues.redhat.com/browse/THREESCALE-6255)
+
+
+## [3.10.0] 2021-01-04
+
+Beta1 is stable and moved to final release.
+
+## [3.10.0-beta1] 2020-11-23
+
+- Fixed issues with OIDC validation [PR #1239](https://github.com/3scale/APIcast/pull/1239) [THREESCALE-6313](https://issues.redhat.com/browse/THREESCALE-6313)
+- Fixed issues with Liquid body size [PR #1240](https://github.com/3scale/APIcast/pull/1240) [THREESCALE-6315](https://issues.redhat.com/browse/THREESCALE-6315)
+
+## [3.10.0-alpha2] 2020-11-04
+
+### Fixed
+
+- Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
+- Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
+
+## [3.10.0-alpha1] 2020-10-13
+
 ### Added
 - Support Proxy Protocol [PR #1211](https://github.com/3scale/APIcast/pull/1211) [THREESCALE-5366](https://issues.redhat.com/browse/THREESCALE-5366)
 - Enable support to log credentials on logging policy [PR #1217](https://github.com/3scale/APIcast/pull/1217) [THREESCALE-5273](https://issues.redhat.com/browse/THREESCALE-5273)
 - Add a way to support more than 1000 services in a single instance  [PR #1222](https://github.com/3scale/APIcast/pull/1222) [THREESCALE-5308](https://issues.redhat.com/browse/THREESCALE-5308)
 - Added new original_request_uri tag on Opentracing [PR #1223](https://github.com/3scale/APIcast/pull/1223) [THREESCALE-5669](https://issues.redhat.com/browse/THREESCALE-5669)
-- Added a new metric when the `worker_process` starts [PR #1228](https://github.com/3scale/APIcast/pull/1228) [THREESCALE-5965](https://issues.redhat.com/browse/THREESCALE-5965)
 - Caching policy disable default field [PR #1226](https://github.com/3scale/APIcast/pull/1226) [THREESCALE-1514](https://issues.redhat.com/browse/THREESCALE-1514)
 - Add response/request content size limits [PR #1227](https://github.com/3scale/APIcast/pull/1227) [THREESCALE-5244](https://issues.redhat.com/browse/THREESCALE-5244)
-- Add HTTP codes policy [PR #1236](https://github.com/3scale/APIcast/pull/1236) [THREESCALE-6255](https://issues.redhat.com/browse/THREESCALE-6255)
-
-
 
 ### Fixed
-
 - Fixed issues with allow caching mode  and 3scale batcher [PR #1216](https://github.com/3scale/APIcast/pull/1216) [THREESCALE-5753](https://issues.redhat.com/browse/THREESCALE-5753)
 - Fixed issues when Auth Caching is disabled [PR #1225](https://github.com/3scale/APIcast/pull/1225) [THREESCALE-4464](https://issues.redhat.com/browse/THREESCALE-4464)
 - Fixed issues with service filter and OIDC [PR #1229](https://github.com/3scale/APIcast/pull/1229) [THREESCALE-6042](https://issues.redhat.com/browse/THREESCALE-6042)
@@ -31,12 +51,11 @@ to function correctly. [PR #1231](https://github.com/3scale/APIcast/pull/1231)
 - Fixed issue with Camel service over HTTPs when Routing Policy [PR #1230](https://github.com/3scale/APIcast/pull/1230) [THREESCALE-5891](https://issues.redhat.com/browse/THREESCALE-5891)
 - Fixed doc issue on SERVICES_FILTER parameter [PR #1233](https://github.com/3scale/APIcast/pull/1233) [THREESCALE-5421](https://issues.redhat.com/browse/THREESCALE-5421)
 - Non-alphanumeric metric name in 3scale-batcher policy [PR #1234](https://github.com/3scale/APIcast/pull/1234) [THREESCALE-4913](https://issues.redhat.com/browse/THREESCALE-4913)
+
+## [3.9.1] 2020-10-13
+
+- Added a new metric when the `worker_process` starts [PR #1228](https://github.com/3scale/APIcast/pull/1228) [THREESCALE-5965](https://issues.redhat.com/browse/THREESCALE-5965)
 - Fixed issues when using fully qualified DNS query [PR #1235](https://github.com/3scale/APIcast/pull/1235) [THREESCALE-4752](https://issues.redhat.com/browse/THREESCALE-4752)
-- Fixed issues with OIDC validation [PR #1239](https://github.com/3scale/APIcast/pull/1239) [THREESCALE-6313](https://issues.redhat.com/browse/THREESCALE-6313)
-- Fixed issues with Liquid body size [PR #1240](https://github.com/3scale/APIcast/pull/1240) [THREESCALE-6315](https://issues.redhat.com/browse/THREESCALE-6315)
-- Fixed filter services with APICAST_SERVICES_FILTER_BY_URL when using remote v2 config [PR #1243](https://github.com/3scale/APIcast/pull/1243) [THREESCALE-6139](https://issues.redhat.com/browse/THREESCALE-6139)
-
-
 
 ## [3.9.0] 2020-08-17
 
@@ -813,7 +832,7 @@ expressed might change in future releases.
 ### Changed
 - Major rewrite using JSON configuration instead of code generation.
 
-[Unreleased]: https://github.com/3scale/apicast/compare/v3.8.0...HEAD
+[Unreleased]: https://github.com/3scale/apicast/compare/v3.10.0...HEAD
 [2.0.0]: https://github.com/3scale/apicast/compare/v0.2...v2.0.0
 [3.0.0-alpha1]: https://github.com/3scale/apicast/compare/v2.0.0...v3.0.0-alpha1
 [3.0.0-alpha2]: https://github.com/3scale/apicast/compare/v3.0.0-alpha1...v3.0.0-alpha2
@@ -864,3 +883,7 @@ expressed might change in future releases.
 [3.9.0-alpha1]: https://github.com/3scale/apicast/compare/v3.8.0...v3.9.0-alpha1
 [3.9.0-beta1]: https://github.com/3scale/apicast/compare/v3.9.0-alpha1..v3.9.0-beta1
 [3.9.0]: https://github.com/3scale/apicast/compare/v3.9.0-beta1..v3.9.0
+[3.10.0-alpha1]: https://github.com/3scale/apicast/compare/v3.9.1..v3.10.0-alpha1
+[3.10.0-alpha2]: https://github.com/3scale/apicast/compare/v3.10.0-alpha1..v3.10.0-alpha2
+[3.10.0-beta1]: https://github.com/3scale/apicast/compare/v3.10.0-alpha2..v3.10.0-beta1
+[3.10.0]: https://github.com/3scale/apicast/compare/v3.10.0-beta1..v3.10.0
