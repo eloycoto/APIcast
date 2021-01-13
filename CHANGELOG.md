@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Buffer access log on chunks [PR #1248](https://github.com/3scale/APIcast/pull/1248) [THREESCALE-6563](https://issues.redhat.com/browse/THREESCALE-6563)
 - Added sendfile_max_chunk to the worker [PR #1250](https://github.com/3scale/APIcast/pull/1250) [THREESCALE-6570](https://issues.redhat.com/browse/THREESCALE-6570)
 - Increased api-keys shared memory size [PR #1250](https://github.com/3scale/APIcast/pull/1250) [THREESCALE-6570](https://issues.redhat.com/browse/THREESCALE-6570)
+- Add support to multiple Origin based on regexp [PR #1251](https://github.com/3scale/APIcast/pull/1251) [THREESCALE-6569](https://issues.redhat.com/browse/THREESCALE-6569)
+
 
 
 ## [3.10.0] 2021-01-04
