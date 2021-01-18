@@ -233,3 +233,51 @@ yay, api backend
 --- error_code: 200
 --- no_error_log
 [error]
+
+=== TEST 5: one transformation with method that doesn't match
+--- configuration
+{
+  "services": [
+    {
+      "id": 42,
+      "proxy": {
+        "policy_chain": [
+          {
+            "name": "rewrite_url_captures",
+            "configuration": {
+              "transformations": [
+                {
+                  "match_rule": "/{var_1}/{var_2}",
+                  "template": "/{var_2}?my_arg={var_1}",
+                  "methods": ["PUT", "OPTIONS"]
+                }
+              ]
+            }
+          },
+          {
+            "name": "upstream",
+            "configuration": {
+              "rules": [
+                {
+                  "regex": "/",
+                  "url": "http://test:$TEST_NGINX_SERVER_PORT"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+--- upstream
+  location /abc/def {
+     content_by_lua_block {
+       ngx.exit(404)
+     }
+  }
+--- request
+GET /abc/def?user_key=xyz
+--- error_code: 404
+--- no_error_log
+[error]
