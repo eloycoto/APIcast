@@ -114,11 +114,11 @@ end
 -- Returns true if no Method is provided in the config for backwardscompatibility
 local function is_match_methods(methods)
 
-  local request_method = ngx.req.get_method()
-
   if methods == nil or next(methods) == nil  then
     return true
   end
+
+  local request_method = ngx.req.get_method()
 
   for _,v in pairs(methods) do
     if v == request_method then
