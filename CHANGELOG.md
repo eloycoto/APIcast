@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.10.0-beta2] 2021-01-29
+
 ### Fixed
 
 - Fixed issues with URI when using Routing Policy [PR #1245](https://github.com/3scale/APIcast/pull/1245) [THREESCALE-6410](https://issues.redhat.com/browse/THREESCALE-6410)
@@ -14,18 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Add methods to transformations in rewrite url captures policy [PR #1253](https://github.com/3scale/APIcast/pull/1253) [THREESCALE-6270](https://issues.redhat.com/browse/THREESCALE-6270)
-- Add Access-Control-Max-Age [PR #1247](https://github.com/3scale/APIcast/pull/1247) [THREESCALE-6556](https://issues.redhat.com/browse/THREESCALE-6556)
-- Add HTTP codes policy [PR #1236](https://github.com/3scale/APIcast/pull/1236) [THREESCALE-6255](https://issues.redhat.com/browse/THREESCALE-6255)
 - Buffer access log on chunks [PR #1248](https://github.com/3scale/APIcast/pull/1248) [THREESCALE-6563](https://issues.redhat.com/browse/THREESCALE-6563)
 - Added sendfile_max_chunk to the worker [PR #1250](https://github.com/3scale/APIcast/pull/1250) [THREESCALE-6570](https://issues.redhat.com/browse/THREESCALE-6570)
 - Increased api-keys shared memory size [PR #1250](https://github.com/3scale/APIcast/pull/1250) [THREESCALE-6570](https://issues.redhat.com/browse/THREESCALE-6570)
 - Add support to multiple Origin based on regexp [PR #1251](https://github.com/3scale/APIcast/pull/1251) [THREESCALE-6569](https://issues.redhat.com/browse/THREESCALE-6569)
-
-
-
-## [3.10.0] 2021-01-04
-
-Beta1 is stable and moved to final release.
 
 ## [3.10.0-beta1] 2020-11-23
 
@@ -902,3 +896,4 @@ expressed might change in future releases.
 [3.10.0-alpha1]: https://github.com/3scale/apicast/compare/v3.9.1..v3.10.0-alpha1
 [3.10.0-alpha2]: https://github.com/3scale/apicast/compare/v3.10.0-alpha1..v3.10.0-alpha2
 [3.10.0-beta1]: https://github.com/3scale/apicast/compare/v3.10.0-alpha2..v3.10.0-beta1
+[3.10.0-beta2]: https://github.com/3scale/apicast/compare/v3.10.0-beta1..v3.10.0-beta2
