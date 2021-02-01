@@ -215,17 +215,14 @@ This tests a CORS actual (not preflight) request with multiple Origins.
 [
   "Access-Control-Allow-Methods: POST, GET, OPTIONS\n".
   "Access-Control-Allow-Origin: http://api.test.com\n".
-  "Access-Control-Allow-Credentials: false\n".
-  "Access-Control-Max-Age: 200\n",
+  "Access-Control-Allow-Credentials: false\n",
 
   "Access-Control-Allow-Methods: POST, GET, OPTIONS\n".
   "Access-Control-Allow-Origin: http://web.test.com\n".
-  "Access-Control-Allow-Credentials: false\n".
-  "Access-Control-Max-Age: 200\n",
+  "Access-Control-Allow-Credentials: false\n",
 
   "Access-Control-Allow-Methods: POST, GET, OPTIONS\n".
-  "Access-Control-Allow-Credentials: false\n".
-  "Access-Control-Max-Age: 200\n",
+  "Access-Control-Allow-Credentials: false\n",
 
 ]
 --- response_body eval
